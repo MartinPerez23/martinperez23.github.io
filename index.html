@@ -1,64 +1,206 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" class="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <style>
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, rgba(50, 50, 50, 1) 0%, rgba(150, 50, 150, 1) 100%);
-            animation: gradient 10s ease infinite;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+<script src="https://cdn.tailwindcss.com"></script>
 
-        h1 {
-            font-size: 4rem;
-            text-shadow: 0 0 5px rgba(255, 0, 255, 0.7), 0 0 10px rgba(0, 255, 255, 0.7);
-        }
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        p {
-            font-size: 1.5rem;
-            text-shadow: 0 0 5px rgba(255, 255, 0, 0.7), 0 0 10px rgba(255, 0, 255, 0.7);
-        }
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        primary: "#0d59f2",
+        cyan: "#00f3ff",
+        violet: "#bc13fe",
+        lime: "#39ff14",
+        orange: "#ff6600",
+        pink: "#ff0055",
+        bgdark: "#05070a"
+      },
+      fontFamily: {
+        display: ["Space Grotesk", "sans-serif"]
+      }
+    }
+  }
+}
+</script>
 
-        button {
-            background-color: #3e3e3e;
-            border: none;
-            color: #fff;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
+<style>
+body { font-family: 'Space Grotesk', sans-serif; }
+.glow { box-shadow: 0 0 20px rgba(0,243,255,0.4); }
+.glow-pink { box-shadow: 0 0 20px rgba(255,0,85,0.4); }
+.glow-lime { box-shadow: 0 0 20px rgba(57,255,20,0.4); }
+.glow-orange { box-shadow: 0 0 20px rgba(255,102,0,0.4); }
+.gradient-hero { background: linear-gradient(135deg, #0d59f2 0%, #bc13fe 50%, #00f3ff 100%); }
+.gradient-border { border-image: linear-gradient(135deg, #00f3ff, #bc13fe, #ff0055) 1; }
+.card-glow { 
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0,243,255,0.2);
+}
+.card-glow:hover {
+  box-shadow: 0 0 30px rgba(0,243,255,0.5);
+  transform: translateY(-5px);
+}
+</style>
 
-        button:hover {
-            background-color: rgba(255, 0, 255, 0.5);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-        }
-    </style>
+<title>Tecniled</title>
 </head>
-<body>
-    <h1>Welcome to My Portfolio</h1>
-    <p>Explore my projects and get to know me!</p>
-    <button>Contact Me</button>
+
+<body class="bg-bgdark text-white">
+
+<!-- Header -->
+<header class="border-b border-violet/30 bg-gradient-to-r from-bgdark via-violet/10 to-bgdark">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <h1 class="text-3xl font-bold bg-gradient-to-r from-cyan via-primary to-violet bg-clip-text text-transparent">Tecniled</h1>
+    <a href="https://wa.me/549XXXXXXXXXX" 
+       class="bg-gradient-to-r from-cyan to-primary px-6 py-2 rounded-lg font-semibold glow hover:shadow-lg transition-all">
+       WhatsApp
+    </a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="text-center py-24 px-6 bg-gradient-to-b from-violet/20 via-transparent to-transparent">
+  <h2 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan via-primary to-pink bg-clip-text text-transparent animate-pulse">
+    Precisión Electrónica
+  </h2>
+  <p class="text-slate-300 max-w-xl mx-auto mb-8 text-lg">
+    Componentes, iluminación LED y reparaciones técnicas especializadas.
+  </p>
+  <div class="flex flex-col md:flex-row gap-4 justify-center">
+    <a href="#productos" class="bg-gradient-to-r from-lime to-cyan text-black px-8 py-3 rounded-xl font-bold glow-lime hover:shadow-lg transition-all">
+      Ver productos
+    </a>
+    <a href="#servicios" class="border-2 border-gradient-to-r from-pink to-orange px-8 py-3 rounded-xl font-bold hover:bg-pink/10 transition-all">
+      Solicitar reparación
+    </a>
+  </div>
+</section>
+
+<!-- Productos -->
+<section id="productos" class="max-w-6xl mx-auto px-6 py-16">
+  <h3 class="text-4xl font-bold mb-10 text-center bg-gradient-to-r from-cyan to-violet bg-clip-text text-transparent">
+    Productos destacados
+  </h3>
+
+  <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    
+    <!-- Producto 1 -->
+    <div class="bg-gradient-to-br from-lime/10 to-transparent p-6 rounded-2xl border-2 border-lime/50 card-glow">
+      <img src="https://via.placeholder.com/200" 
+           class="mx-auto mb-4">
+      <h4 class="text-xl font-bold text-lime mb-2">Potenciómetro Lineal</h4>
+      <p class="text-slate-400 text-sm mb-4">
+        Alta precisión para audio y electrónica.
+      </p>
+      <a href="https://wa.me/549XXXXXXXXXX" 
+         class="block text-center bg-gradient-to-r from-lime to-cyan text-black py-2 rounded-lg font-bold hover:shadow-lg transition-all">
+        Consultar
+      </a>
+    </div>
+
+    <!-- Producto 2 -->
+    <div class="bg-gradient-to-br from-orange/10 to-transparent p-6 rounded-2xl border-2 border-orange/50 card-glow">
+      <img src="https://via.placeholder.com/200" 
+           class="mx-auto mb-4">
+      <h4 class="text-xl font-bold text-orange mb-2">Fuente LED 12V</h4>
+      <p class="text-slate-400 text-sm mb-4">
+        Fuente estabilizada para iluminación.
+      </p>
+      <a href="https://wa.me/549XXXXXXXXXX" 
+         class="block text-center bg-gradient-to-r from-orange to-pink text-black py-2 rounded-lg font-bold hover:shadow-lg transition-all">
+        Consultar
+      </a>
+    </div>
+
+    <!-- Producto 3 -->
+    <div class="bg-gradient-to-br from-pink/10 to-transparent p-6 rounded-2xl border-2 border-pink/50 card-glow">
+      <img src="https://via.placeholder.com/200" 
+           class="mx-auto mb-4">
+      <h4 class="text-xl font-bold text-pink mb-2">Controladora DJ</h4>
+      <p class="text-slate-400 text-sm mb-4">
+        Repuestos y reparación especializada.
+      </p>
+      <a href="https://wa.me/549XXXXXXXXXX" 
+         class="block text-center bg-gradient-to-r from-pink to-violet text-white py-2 rounded-lg font-bold hover:shadow-lg transition-all">
+        Consultar
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Servicios -->
+<section id="servicios" class="bg-gradient-to-r from-cyan/10 via-transparent to-violet/10 py-16">
+  <div class="max-w-6xl mx-auto px-6">
+    <h3 class="text-4xl font-bold text-center mb-10 bg-gradient-to-r from-violet to-cyan bg-clip-text text-transparent">
+      Servicios técnicos
+    </h3>
+
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      <div class="text-center p-4 rounded-lg bg-primary/10 border border-primary/30 hover:border-primary/70 transition-all">
+        <h4 class="font-bold mb-2 text-primary text-lg">🔧 Reparación TV</h4>
+        <p class="text-slate-400 text-sm">
+          LED, LCD y Smart TV.
+        </p>
+      </div>
+      <div class="text-center p-4 rounded-lg bg-cyan/10 border border-cyan/30 hover:border-cyan/70 transition-all">
+        <h4 class="font-bold mb-2 text-cyan text-lg">💡 Iluminación LED</h4>
+        <p class="text-slate-400 text-sm">
+          Fuentes, tiras y controladores.
+        </p>
+      </div>
+      <div class="text-center p-4 rounded-lg bg-lime/10 border border-lime/30 hover:border-lime/70 transition-all">
+        <h4 class="font-bold mb-2 text-lime text-lg">🎵 Consolas DJ</h4>
+        <p class="text-slate-400 text-sm">
+          Mantenimiento y repuestos.
+        </p>
+      </div>
+      <div class="text-center p-4 rounded-lg bg-pink/10 border border-pink/30 hover:border-pink/70 transition-all">
+        <h4 class="font-bold mb-2 text-pink text-lg">🔍 Diagnóstico</h4>
+        <p class="text-slate-400 text-sm">
+          Análisis electrónico avanzado.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cómo comprar -->
+<section class="py-16 text-center px-6 bg-gradient-to-b from-transparent to-primary/10">
+  <h3 class="text-4xl font-bold mb-8 bg-gradient-to-r from-orange to-pink bg-clip-text text-transparent">¿Cómo comprar?</h3>
+  <div class="max-w-3xl mx-auto grid gap-6 md:grid-cols-4 text-sm">
+    <div class="p-4 rounded-lg bg-primary/20 border border-primary/30">
+      <div class="font-bold text-primary mb-2">1</div>
+      Elegí el producto
+    </div>
+    <div class="p-4 rounded-lg bg-cyan/20 border border-cyan/30">
+      <div class="font-bold text-cyan mb-2">2</div>
+      Consultá por WhatsApp
+    </div>
+    <div class="p-4 rounded-lg bg-lime/20 border border-lime/30">
+      <div class="font-bold text-lime mb-2">3</div>
+      Pagá por transferencia
+    </div>
+    <div class="p-4 rounded-lg bg-pink/20 border border-pink/30">
+      <div class="font-bold text-pink mb-2">4</div>
+      Retirá o recibí envío
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t-2 border-gradient-to-r from-cyan to-pink bg-gradient-to-r from-primary/5 to-violet/5 py-8 text-center">
+  <p class="text-lg font-semibold bg-gradient-to-r from-cyan via-primary to-violet bg-clip-text text-transparent">
+    Tecniled © 2026
+  </p>
+  <p class="text-slate-500 text-sm mt-2">Tecnología y precisión al servicio de tu negocio</p>
+</footer>
+
 </body>
 </html>
