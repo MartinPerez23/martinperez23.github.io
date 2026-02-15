@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        primary: "#0d59f2",
+        cyan: "#00f3ff",
+        violet: "#bc13fe",
+        bgdark: "#05070a"
+      },
+      fontFamily: {
+        display: ["Space Grotesk", "sans-serif"]
+      }
+    }
+  }
+}
+</script>
+
+<style>
+body { font-family: 'Space Grotesk', sans-serif; }
+.glow { box-shadow: 0 0 20px rgba(0,243,255,0.4); }
+</style>
+
+<title>Tecniled</title>
+</head>
+
+<body class="bg-bgdark text-white">
+
+<!-- Header -->
+<header class="border-b border-white/10">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold">Tecniled</h1>
+    <a href="https://wa.me/549XXXXXXXXXX" 
+       class="bg-primary px-5 py-2 rounded-lg font-semibold glow">
+       WhatsApp
+    </a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="text-center py-20 px-6">
+  <h2 class="text-4xl md:text-6xl font-bold mb-6">
+    Precisión Electrónica
+  </h2>
+  <p class="text-slate-400 max-w-xl mx-auto mb-8">
+    Componentes, iluminación LED y reparaciones técnicas especializadas.
+  </p>
+  <div class="flex flex-col md:flex-row gap-4 justify-center">
+    <a href="#productos" class="bg-primary px-6 py-3 rounded-xl font-bold glow">
+      Ver productos
+    </a>
+    <a href="#servicios" class="border border-violet px-6 py-3 rounded-xl font-bold">
+      Solicitar reparación
+    </a>
+  </div>
+</section>
+
+<!-- Productos -->
+<section id="productos" class="max-w-6xl mx-auto px-6 py-16">
+  <h3 class="text-3xl font-bold mb-10 text-center">
+    Productos destacados
+  </h3>
+
+  <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    
+    <!-- Producto -->
+    <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
+      <img src="https://via.placeholder.com/200" 
+           class="mx-auto mb-4">
+      <h4 class="text-xl font-bold">Potenciómetro Lineal</h4>
+      <p class="text-slate-400 text-sm mb-4">
+        Alta precisión para audio y electrónica.
+      </p>
+      <a href="https://wa.me/549XXXXXXXXXX" 
+         class="block text-center bg-cyan text-black py-2 rounded-lg font-bold">
+        Consultar
+      </a>
+    </div>
+
+    <!-- Producto -->
+    <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
+      <img src="https://via.placeholder.com/200" 
+           class="mx-auto mb-4">
+      <h4 class="text-xl font-bold">Fuente LED 12V</h4>
+      <p class="text-slate-400 text-sm mb-4">
+        Fuente estabilizada para iluminación.
+      </p>
+      <a href="https://wa.me/549XXXXXXXXXX" 
+         class="block text-center bg-cyan text-black py-2 rounded-lg font-bold">
+        Consultar
+      </a>
+    </div>
+
+    <!-- Producto -->
+    <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
+      <img src="https://via.placeholder.com/200" 
+           class="mx-auto mb-4">
+      <h4 class="text-xl font-bold">Controladora DJ</h4>
+      <p class="text-slate-400 text-sm mb-4">
+        Repuestos y reparación especializada.
+      </p>
+      <a href="https://wa.me/549XXXXXXXXXX" 
+         class="block text-center bg-cyan text-black py-2 rounded-lg font-bold">
+        Consultar
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Servicios -->
+<section id="servicios" class="bg-white/5 py-16">
+  <div class="max-w-6xl mx-auto px-6">
+    <h3 class="text-3xl font-bold text-center mb-10">
+      Servicios técnicos
+    </h3>
+
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      <div class="text-center">
+        <h4 class="font-bold mb-2">Reparación TV</h4>
+        <p class="text-slate-400 text-sm">
+          LED, LCD y Smart TV.
+        </p>
+      </div>
+      <div class="text-center">
+        <h4 class="font-bold mb-2">Iluminación LED</h4>
+        <p class="text-slate-400 text-sm">
+          Fuentes, tiras y controladores.
+        </p>
+      </div>
+      <div class="text-center">
+        <h4 class="font-bold mb-2">Consolas DJ</h4>
+        <p class="text-slate-400 text-sm">
+          Mantenimiento y repuestos.
+        </p>
+      </div>
+      <div class="text-center">
+        <h4 class="font-bold mb-2">Diagnóstico</h4>
+        <p class="text-slate-400 text-sm">
+          Análisis electrónico avanzado.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cómo comprar -->
+<section class="py-16 text-center px-6">
+  <h3 class="text-3xl font-bold mb-8">¿Cómo comprar?</h3>
+  <div class="max-w-3xl mx-auto grid gap-6 md:grid-cols-4 text-sm">
+    <div>Elegí el producto</div>
+    <div>Consultá por WhatsApp</div>
+    <div>Pagá por transferencia</div>
+    <div>Retirá o recibí envío</div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t border-white/10 py-8 text-center text-slate-500">
+  Tecniled © 2026
+</footer>
+
+</body>
+</html>
