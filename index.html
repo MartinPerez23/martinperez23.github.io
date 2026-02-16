@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tecniled - Componentes electrónicos premium y servicios técnicos especializados. Reparación de TV, LED, consolas DJ y diagnóstico electrónico.">
-    <meta name="keywords" content="componentes electrónicos, LED, potenciómetros, consolas DJ, reparación, diagnóstico técnico">
+    <meta name="description" content="Tecniled - Componentes electrónicos premium y servicios técnicos especializados. Reparación profesional de TV, LED, consolas DJ y diagnóstico electrónico avanzado.">
+    <meta name="keywords" content="componentes electrónicos, LED, potenciómetros, consolas DJ, reparación técnica, diagnóstico electrónico">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
@@ -17,40 +17,74 @@
                     colors: {
                         "tech-dark": "#0a0e27",
                         "tech-darker": "#050810",
+                        "tech-bg": "#0f1423",
                         "cyan-neon": "#00f3ff",
                         "violet-neon": "#bc13fe",
                         "lime-neon": "#39ff14",
                         "primary-blue": "#0d59f2",
                         "accent-pink": "#ff0055",
-                        "gold-accent": "#ffd700"
+                        "deep-blue": "#001a4d"
                     },
                     fontFamily: {
                         "display": ["Orbitron", "sans-serif"],
                         "tech": ["Space Grotesk", "sans-serif"]
                     },
+                    backdropBlur: {
+                        "xs": "2px",
+                        "sm": "4px",
+                        "md": "12px",
+                        "lg": "16px",
+                        "xl": "24px"
+                    },
                     animation: {
-                        "pulse-glow": "pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-                        "float": "float 6s ease-in-out infinite",
-                        "scan-lines": "scan-lines 8s linear infinite",
-                        "circuit-flow": "circuit-flow 3s ease-in-out infinite"
+                        "glow-pulse": "glow-pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+                        "float-slow": "float-slow 8s ease-in-out infinite",
+                        "drift": "drift 20s linear infinite",
+                        "shimmer": "shimmer 2s linear infinite",
+                        "pulse-deep": "pulse-deep 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+                        "glow-box": "glow-box 3s ease-in-out infinite"
                     },
                     keyframes: {
-                        "pulse-glow": {
-                            "0%, 100%": { "box-shadow": "0 0 20px rgba(0, 243, 255, 0.2)" },
-                            "50%": { "box-shadow": "0 0 40px rgba(0, 243, 255, 0.6)" }
+                        "glow-pulse": {
+                            "0%, 100%": { 
+                                "box-shadow": "0 0 30px rgba(0, 243, 255, 0.2), 0 0 60px rgba(0, 243, 255, 0.1)",
+                                "filter": "brightness(1)"
+                            },
+                            "50%": { 
+                                "box-shadow": "0 0 60px rgba(0, 243, 255, 0.5), 0 0 120px rgba(0, 243, 255, 0.3)",
+                                "filter": "brightness(1.1)"
+                            }
                         },
-                        "float": {
-                            "0%, 100%": { "transform": "translateY(0px)" },
-                            "50%": { "transform": "translateY(-20px)" }
+                        "float-slow": {
+                            "0%, 100%": { "transform": "translateY(0px) translateX(0px)" },
+                            "25%": { "transform": "translateY(-30px) translateX(10px)" },
+                            "50%": { "transform": "translateY(0px) translateX(20px)" },
+                            "75%": { "transform": "translateY(-20px) translateX(5px)" }
                         },
-                        "scan-lines": {
-                            "0%": { "transform": "translateY(-100%)" },
-                            "100%": { "transform": "translateY(100%)" }
+                        "drift": {
+                            "0%": { "transform": "translateX(-100%)" },
+                            "100%": { "transform": "translateX(100%)" }
                         },
-                        "circuit-flow": {
-                            "0%": { "opacity": "0.3", "filter": "blur(10px)" },
-                            "50%": { "opacity": "0.8" },
-                            "100%": { "opacity": "0.3", "filter": "blur(10px)" }
+                        "shimmer": {
+                            "0%": { "opacity": "0.2" },
+                            "50%": { "opacity": "1" },
+                            "100%": { "opacity": "0.2" }
+                        },
+                        "pulse-deep": {
+                            "0%, 100%": { 
+                                "box-shadow": "0 0 0 0 rgba(0, 243, 255, 0.7)"
+                            },
+                            "50%": { 
+                                "box-shadow": "0 0 0 30px rgba(0, 243, 255, 0)"
+                            }
+                        },
+                        "glow-box": {
+                            "0%, 100%": { 
+                                "box-shadow": "0 0 20px rgba(0, 243, 255, 0.3), inset 0 0 20px rgba(0, 243, 255, 0.1)"
+                            },
+                            "50%": { 
+                                "box-shadow": "0 0 40px rgba(0, 243, 255, 0.6), inset 0 0 30px rgba(0, 243, 255, 0.2)"
+                            }
                         }
                     }
                 }
@@ -67,116 +101,170 @@
 
         body {
             font-family: 'Space Grotesk', sans-serif;
-            background-color: #0a0e27;
+            background: linear-gradient(135deg, #050810 0%, #0a0e27 25%, #0f1423 50%, #05070f 75%, #050810 100%);
+            background-size: 400% 400%;
+            animation: gradient-shift 15s ease infinite;
             color: #e0e0e0;
             overflow-x: hidden;
-        }
-
-        /* Efectos Glow */
-        .glow-cyan {
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.5), 
-                        0 0 40px rgba(0, 243, 255, 0.3),
-                        inset 0 0 20px rgba(0, 243, 255, 0.1);
-        }
-
-        .glow-violet {
-            box-shadow: 0 0 20px rgba(188, 19, 254, 0.5),
-                        0 0 40px rgba(188, 19, 254, 0.3),
-                        inset 0 0 20px rgba(188, 19, 254, 0.1);
-        }
-
-        .glow-lime {
-            box-shadow: 0 0 20px rgba(57, 255, 20, 0.5),
-                        0 0 40px rgba(57, 255, 20, 0.3),
-                        inset 0 0 20px rgba(57, 255, 20, 0.1);
-        }
-
-        .border-glow {
-            border: 1px solid rgba(0, 243, 255, 0.5);
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3) inset;
-        }
-
-        /* Efectos de Circuito */
-        .circuit-bg {
             position: relative;
-            overflow: hidden;
         }
 
-        .circuit-bg::before {
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Efecto de luz ambiental */
+        body::before {
             content: '';
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: 
-                linear-gradient(90deg, transparent 24%, rgba(0, 243, 255, 0.05) 25%, rgba(0, 243, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 243, 255, 0.05) 75%, rgba(0, 243, 255, 0.05) 76%, transparent 77%, transparent),
-                linear-gradient(0deg, transparent 24%, rgba(0, 243, 255, 0.05) 25%, rgba(0, 243, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 243, 255, 0.05) 75%, rgba(0, 243, 255, 0.05) 76%, transparent 77%, transparent);
-            background-size: 50px 50px;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 243, 255, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(188, 19, 254, 0.05) 0%, transparent 50%);
             pointer-events: none;
-            z-index: 1;
+            z-index: 0;
         }
 
-        .circuit-content {
+        /* Glass Morphism Base */
+        .glass {
+            background: rgba(10, 14, 39, 0.5);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 243, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-strong {
+            background: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Sombras profesionales */
+        .shadow-glow-cyan {
+            box-shadow: 
+                0 0 0 1px rgba(0, 243, 255, 0.2),
+                0 10px 30px rgba(0, 243, 255, 0.15),
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                inset 0 1px 2px rgba(255, 255, 255, 0.1);
+        }
+
+        .shadow-glow-violet {
+            box-shadow: 
+                0 0 0 1px rgba(188, 19, 254, 0.2),
+                0 10px 30px rgba(188, 19, 254, 0.15),
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                inset 0 1px 2px rgba(255, 255, 255, 0.1);
+        }
+
+        .shadow-glow-lime {
+            box-shadow: 
+                0 0 0 1px rgba(57, 255, 20, 0.2),
+                0 10px 30px rgba(57, 255, 20, 0.15),
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                inset 0 1px 2px rgba(255, 255, 255, 0.1);
+        }
+
+        .shadow-heavy {
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Efectos de luz neón */
+        .neon-glow {
+            text-shadow: 
+                0 0 10px rgba(0, 243, 255, 0.5),
+                0 0 20px rgba(0, 243, 255, 0.3),
+                0 0 30px rgba(188, 19, 254, 0.2);
+        }
+
+        /* Degradados impactantes */
+        .gradient-cyan-violet {
+            background: linear-gradient(135deg, #00f3ff 0%, #bc13fe 100%);
+        }
+
+        .gradient-blue-lime {
+            background: linear-gradient(135deg, #0d59f2 0%, #39ff14 100%);
+        }
+
+        .gradient-violet-pink {
+            background: linear-gradient(135deg, #bc13fe 0%, #ff0055 100%);
+        }
+
+        /* Cards con profundidad 3D */
+        .card-3d {
+            perspective: 1000px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
             position: relative;
-            z-index: 2;
+            transform-style: preserve-3d;
         }
 
-        /* Líneas Digitales */
-        .digital-line {
-            position: absolute;
-            background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.5), transparent);
-            height: 1px;
+        .card-3d:hover {
+            transform: translateY(-20px) translateZ(40px) rotateX(5deg);
+            box-shadow: 
+                0 0 0 1px rgba(0, 243, 255, 0.3),
+                0 20px 60px rgba(0, 243, 255, 0.25),
+                0 40px 80px rgba(0, 0, 0, 0.7);
         }
 
-        /* Hover Effects */
-        .card-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-
-        .card-hover::before {
+        .card-3d::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(0, 243, 255, 0.1) 50%, transparent 70%);
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(188, 19, 254, 0.1));
+            border-radius: inherit;
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: opacity 0.4s ease;
             pointer-events: none;
         }
 
-        .card-hover:hover::before {
+        .card-3d:hover::before {
             opacity: 1;
         }
 
-        .card-hover:hover {
-            transform: translateY(-10px) translateZ(20px);
-            box-shadow: 0 20px 40px rgba(0, 243, 255, 0.2);
-        }
-
-        /* Botones */
-        .btn-glow {
+        /* Botones con efecto láser */
+        .btn-laser {
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
         }
 
-        .btn-glow::before {
+        .btn-laser::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s ease;
+            z-index: 1;
         }
 
-        .btn-glow:hover::before {
+        .btn-laser:hover::before {
             left: 100%;
         }
 
-        /* Scan Lines Effect */
+        .btn-laser:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 0 30px rgba(0, 243, 255, 0.6),
+                0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Líneas de código/circuito animadas */
+        .circuit-line {
+            position: relative;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00f3ff, transparent);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+            animation: drift 4s linear infinite;
+        }
+
+        /* Efecto de escaneo */
         .scan-effect {
             position: relative;
             overflow: hidden;
@@ -187,143 +275,203 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
                 0deg,
-                transparent 24%, 
-                rgba(255, 255, 255, 0.05) 25%, 
-                rgba(255, 255, 255, 0.05) 26%, 
-                transparent 27%, 
-                transparent 74%, 
-                rgba(255, 255, 255, 0.05) 75%, 
-                rgba(255, 255, 255, 0.05) 76%, 
-                transparent 77%, 
-                transparent
+                rgba(0, 243, 255, 0.03),
+                rgba(0, 243, 255, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
             );
-            background-size: 100% 3px;
             pointer-events: none;
-            animation: scan-lines 8s linear infinite;
+            animation: scan-move 8s linear infinite;
         }
 
-        /* Scroll Smooth */
+        @keyframes scan-move {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        /* Scroll suave */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Responsive */
+        /* Estrellas/partículas flotantes */
+        .floating-particle {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: #00f3ff;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float-slow 8s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Navbar blur intenso */
+        .navbar-blur {
+            background: linear-gradient(180deg, rgba(5, 8, 16, 0.95) 0%, rgba(5, 8, 16, 0.8) 100%);
+            backdrop-filter: blur(40px);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Hover effect para links */
+        a {
+            position: relative;
+            text-decoration: none;
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00f3ff, #bc13fe);
+            transition: width 0.3s ease;
+        }
+
+        a:hover::after {
+            width: 100%;
+        }
+
         @media (max-width: 768px) {
-            .text-6xl {
-                font-size: 2.5rem;
+            .card-3d:hover {
+                transform: translateY(-10px);
             }
         }
     </style>
 
-    <title>Tecniled - Componentes Electrónicos y Servicios Técnicos</title>
+    <title>Tecniled - Precisión Electrónica | Componentes Premium y Reparaciones Técnicas</title>
 </head>
 
-<body class="bg-tech-darker text-gray-100">
+<body class="bg-tech-darker text-gray-100 relative z-10">
 
-    <!-- Botón WhatsApp Flotante -->
+    <!-- Partículas flotantes -->
+    <div class="floating-particle" style="top: 10%; left: 10%; animation-delay: 0s;"></div>
+    <div class="floating-particle" style="top: 20%; right: 15%; animation-delay: 1s;"></div>
+    <div class="floating-particle" style="top: 40%; left: 5%; animation-delay: 2s;"></div>
+    <div class="floating-particle" style="top: 60%; right: 10%; animation-delay: 3s;"></div>
+    <div class="floating-particle" style="top: 80%; left: 20%; animation-delay: 4s;"></div>
+
+    <!-- Botón WhatsApp Flotante Premium -->
     <a href="https://wa.me/549XXXXXXXXXX" target="_blank" rel="noopener noreferrer"
-       class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg glow-cyan z-50 transition-all duration-300 flex items-center justify-center"
+       class="fixed bottom-8 right-8 w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 text-white flex items-center justify-center rounded-full shadow-heavy btn-laser z-50 transition-all duration-300 hover:scale-110"
        title="Contactar por WhatsApp">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-5.031 1.378c-1.536.946-2.823 2.291-3.72 3.887C2.905 13.37 2.17 15.9 2.37 18.46c.146 1.667.591 3.172 1.389 4.418l.213.344L2.87 23.795l4.239-1.111.333.213a9.875 9.875 0 005.031 1.378h.004c5.44 0 9.926-4.465 9.926-9.926 0-2.646-1.025-5.14-2.9-7.012-1.874-1.872-4.368-2.9-7.012-2.9"/>
         </svg>
+        <span class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white text-xs flex items-center justify-center rounded-full animate-pulse">24h</span>
     </a>
 
-    <!-- Header/Navbar -->
-    <header class="fixed top-0 w-full z-40 backdrop-blur-md bg-tech-darker/80 border-b border-cyan-neon/20">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <div class="w-10 h-10 bg-gradient-to-br from-cyan-neon to-violet-neon rounded-lg flex items-center justify-center">
-                    <span class="font-display text-white font-bold text-lg">⚡</span>
+    <!-- Header/Navbar Premium -->
+    <header class="fixed top-0 w-full z-40 navbar-blur">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center space-x-3 group">
+                <div class="relative w-12 h-12 bg-gradient-cyan-violet rounded-xl flex items-center justify-center shadow-glow-cyan group-hover:shadow-lg transition-all">
+                    <span class="font-display text-white font-bold text-xl">⚡</span>
+                    <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-cyan-neon/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
-                <h1 class="font-display text-2xl font-bold bg-gradient-to-r from-cyan-neon via-primary-blue to-violet-neon bg-clip-text text-transparent">
-                    Tecniled
-                </h1>
+                <div>
+                    <h1 class="font-display text-2xl font-black bg-gradient-to-r from-cyan-neon via-primary-blue to-violet-neon bg-clip-text text-transparent neon-glow">
+                        TECNILED
+                    </h1>
+                    <p class="text-xs text-gray-400 font-semibold">Precisión Electrónica</p>
+                </div>
             </div>
             
-            <nav class="hidden md:flex space-x-8">
-                <a href="#productos" class="text-gray-400 hover:text-cyan-neon transition-colors">Productos</a>
-                <a href="#servicios" class="text-gray-400 hover:text-cyan-neon transition-colors">Servicios</a>
-                <a href="#proceso" class="text-gray-400 hover:text-cyan-neon transition-colors">Cómo Comprar</a>
-                <a href="#contacto" class="text-gray-400 hover:text-cyan-neon transition-colors">Contacto</a>
+            <nav class="hidden lg:flex space-x-10">
+                <a href="#productos" class="text-gray-400 hover:text-cyan-neon font-medium transition-all">Productos</a>
+                <a href="#servicios" class="text-gray-400 hover:text-violet-neon font-medium transition-all">Servicios</a>
+                <a href="#proceso" class="text-gray-400 hover:text-lime-neon font-medium transition-all">Cómo Comprar</a>
+                <a href="#contacto" class="text-gray-400 hover:text-cyan-neon font-medium transition-all">Contacto</a>
             </nav>
 
             <a href="https://wa.me/549XXXXXXXXXX" target="_blank"
-               class="hidden md:block bg-gradient-to-r from-cyan-neon to-primary-blue text-black px-6 py-2 rounded-lg font-semibold btn-glow glow-cyan hover:shadow-lg">
-                Contactar
+               class="hidden md:block px-8 py-3 bg-gradient-to-r from-cyan-neon to-primary-blue text-black rounded-xl font-bold btn-laser shadow-glow-cyan hover:shadow-lg relative overflow-hidden">
+                <span class="relative z-10">Consultar Ahora</span>
             </a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="pt-32 pb-24 px-6 relative overflow-hidden circuit-bg">
-        <div class="max-w-6xl mx-auto relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <!-- Hero Section Ultra Premium -->
+    <section class="pt-40 pb-32 px-6 relative overflow-hidden scan-effect">
+        <!-- Fondos con glow -->
+        <div class="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-cyan-neon to-transparent rounded-full filter blur-3xl opacity-20 animate-glow-pulse"></div>
+        <div class="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-violet-neon to-transparent rounded-full filter blur-3xl opacity-20 animate-glow-pulse" style="animation-delay: 1s;"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <!-- Contenido Hero -->
-                <div class="space-y-6 animate-fade-in">
-                    <div class="inline-block px-4 py-2 rounded-full bg-cyan-neon/10 border border-cyan-neon/50">
-                        <span class="text-cyan-neon text-sm font-semibold">🚀 Tecnología Avanzada</span>
+                <div class="space-y-8 animate-[fadeInUp_0.8s_ease-out]">
+                    <!-- Badge premium -->
+                    <div class="inline-block px-6 py-3 glass rounded-full shadow-glow-cyan hover:shadow-lg transition-all group cursor-pointer">
+                        <span class="text-cyan-neon text-sm font-bold flex items-center gap-2">
+                            <span class="w-2 h-2 bg-cyan-neon rounded-full animate-pulse"></span>
+                            SERVICIOS TÉCNICOS DE PRECISIÓN
+                        </span>
                     </div>
 
-                    <h2 class="text-5xl md:text-7xl font-display font-black leading-tight">
-                        <span class="bg-gradient-to-r from-cyan-neon via-primary-blue to-violet-neon bg-clip-text text-transparent">
-                            Precisión
-                        </span>
-                        <br>
-                        <span class="text-white">Electrónica.</span>
-                        <br>
-                        <span class="bg-gradient-to-r from-lime-neon to-cyan-neon bg-clip-text text-transparent">
-                            Tecnología sin límites.
-                        </span>
-                    </h2>
+                    <!-- Headline impactante -->
+                    <div class="space-y-4">
+                        <h1 class="text-6xl md:text-7xl lg:text-8xl font-display font-black leading-tight">
+                            <span class="block bg-gradient-to-r from-cyan-neon via-blue-400 to-violet-neon bg-clip-text text-transparent neon-glow">
+                                PRECISIÓN
+                            </span>
+                            <span class="block text-white">ELECTRÓNICA</span>
+                            <span class="block bg-gradient-to-r from-lime-neon to-cyan-neon bg-clip-text text-transparent">
+                                SIN LÍMITES
+                            </span>
+                        </h1>
+                        <p class="text-xl text-gray-300 max-w-lg leading-relaxed font-light">
+                            Componentes electrónicos premium, servicios técnicos especializados y soluciones de precisión 
+                            que llevan tu tecnología al siguiente nivel.
+                        </p>
+                    </div>
 
-                    <p class="text-gray-300 text-lg max-w-lg">
-                        Componentes premium, servicios técnicos especializados y soluciones electrónicas de precisión. 
-                        Desde reparaciones complejas hasta componentes de última generación.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                        <a href="#productos" class="px-8 py-4 bg-gradient-to-r from-cyan-neon to-primary-blue text-black rounded-xl font-semibold btn-glow glow-cyan hover:shadow-2xl transform hover:scale-105 transition-all">
-                            Ver Productos
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-6">
+                        <a href="#productos" class="group px-10 py-4 bg-gradient-cyan-violet text-black rounded-xl font-bold btn-laser shadow-glow-cyan hover:shadow-lg transition-all flex items-center justify-center gap-3">
+                            <span>VER CATÁLOGO</span>
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
                         </a>
-                        <a href="#servicios" class="px-8 py-4 border-2 border-violet-neon text-violet-neon rounded-xl font-semibold hover:bg-violet-neon/10 transition-all">
-                            Solicitar Reparación
+                        <a href="#servicios" class="px-10 py-4 glass rounded-xl font-bold btn-laser border-2 border-violet-neon/50 hover:border-violet-neon hover:bg-violet-neon/10 transition-all text-violet-neon">
+                            SOLICITAR REPARACIÓN
                         </a>
                     </div>
 
-                    <!-- Stats -->
-                    <div class="flex gap-8 pt-8">
+                    <!-- Stats con glow -->
+                    <div class="flex gap-12 pt-12 border-t border-cyan-neon/20">
                         <div class="space-y-1">
-                            <div class="text-2xl font-bold text-cyan-neon">500+</div>
-                            <div class="text-sm text-gray-400">Clientes Satisfechos</div>
+                            <div class="text-4xl font-black bg-gradient-to-r from-cyan-neon to-blue-400 bg-clip-text text-transparent">500+</div>
+                            <div class="text-sm text-gray-400 font-semibold">Clientes Premium</div>
                         </div>
                         <div class="space-y-1">
-                            <div class="text-2xl font-bold text-violet-neon">10+</div>
-                            <div class="text-sm text-gray-400">Años Experiencia</div>
+                            <div class="text-4xl font-black bg-gradient-to-r from-violet-neon to-pink-400 bg-clip-text text-transparent">10+</div>
+                            <div class="text-sm text-gray-400 font-semibold">Años Expertise</div>
                         </div>
                         <div class="space-y-1">
-                            <div class="text-2xl font-bold text-lime-neon">24h</div>
-                            <div class="text-sm text-gray-400">Respuesta Rápida</div>
+                            <div class="text-4xl font-black bg-gradient-to-r from-lime-neon to-cyan-neon bg-clip-text text-transparent">24h</div>
+                            <div class="text-sm text-gray-400 font-semibold">Respuesta Máxima</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Hero Visual -->
-                <div class="relative h-96 hidden lg:block">
-                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-neon/10 to-violet-neon/10 rounded-2xl border border-cyan-neon/30 glow-cyan animate-pulse-glow">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="relative w-64 h-64">
-                                <!-- Efecto de circuito animado -->
-                                <svg class="absolute inset-0" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                    <!-- Circuito -->
-                                    <circle cx="100" cy="100" r="80" fill="none" stroke="url(#grad1)" stroke-width="2" opacity="0.5"/>
-                                    <circle cx="100" cy="100" r="60" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.5"/>
-                                    <circle cx="100" cy="100" r="40" fill="none" stroke="url(#grad1)" stroke-width="2" opacity="0.5"/>
-                                    
+                <!-- Hero Visual 3D -->
+                <div class="hidden lg:flex items-center justify-center">
+                    <div class="relative w-full h-96 perspective">
+                        <!-- Caja central con glow -->
+                        <div class="absolute inset-0 glass rounded-3xl shadow-heavy border border-cyan-neon/30 animate-glow-pulse">
+                            <div class="absolute inset-6 bg-gradient-to-br from-cyan-neon/10 to-violet-neon/10 rounded-2xl flex items-center justify-center">
+                                <!-- SVG Circuito 3D -->
+                                <svg class="w-64 h-64" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
                                         <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
                                             <stop offset="0%" style="stop-color:#00f3ff;stop-opacity:1" />
@@ -333,319 +481,345 @@
                                             <stop offset="0%" style="stop-color:#39ff14;stop-opacity:1" />
                                             <stop offset="100%" style="stop-color:#00f3ff;stop-opacity:1" />
                                         </linearGradient>
+                                        <filter id="glow">
+                                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                            <feMerge>
+                                                <feMergeNode in="coloredBlur"/>
+                                                <feMergeNode in="SourceGraphic"/>
+                                            </feMerge>
+                                        </filter>
                                     </defs>
-
-                                    <!-- Puntos de nodo -->
-                                    <circle cx="100" cy="30" r="3" fill="#00f3ff" opacity="0.8"/>
-                                    <circle cx="170" cy="100" r="3" fill="#bc13fe" opacity="0.8"/>
-                                    <circle cx="100" cy="170" r="3" fill="#39ff14" opacity="0.8"/>
-                                    <circle cx="30" cy="100" r="3" fill="#00f3ff" opacity="0.8"/>
+                                    
+                                    <!-- Circulos de circuito -->
+                                    <circle cx="100" cy="100" r="90" fill="none" stroke="url(#grad1)" stroke-width="2" opacity="0.6" filter="url(#glow)"/>
+                                    <circle cx="100" cy="100" r="70" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6" filter="url(#glow)"/>
+                                    <circle cx="100" cy="100" r="50" fill="none" stroke="url(#grad1)" stroke-width="2" opacity="0.6" filter="url(#glow)"/>
+                                    
+                                    <!-- Líneas de conexión -->
+                                    <line x1="100" y1="10" x2="100" y2="30" stroke="url(#grad1)" stroke-width="2" opacity="0.8" filter="url(#glow)"/>
+                                    <line x1="190" y1="100" x2="170" y2="100" stroke="url(#grad2)" stroke-width="2" opacity="0.8" filter="url(#glow)"/>
+                                    <line x1="100" y1="190" x2="100" y2="170" stroke="url(#grad1)" stroke-width="2" opacity="0.8" filter="url(#glow)"/>
+                                    <line x1="10" y1="100" x2="30" y2="100" stroke="url(#grad2)" stroke-width="2" opacity="0.8" filter="url(#glow)"/>
+                                    
+                                    <!-- Nodos principales -->
+                                    <circle cx="100" cy="30" r="4" fill="#00f3ff" opacity="0.9" filter="url(#glow)"/>
+                                    <circle cx="170" cy="100" r="4" fill="#bc13fe" opacity="0.9" filter="url(#glow)"/>
+                                    <circle cx="100" cy="170" r="4" fill="#39ff14" opacity="0.9" filter="url(#glow)"/>
+                                    <circle cx="30" cy="100" r="4" fill="#00f3ff" opacity="0.9" filter="url(#glow)"/>
+                                    
+                                    <!-- Centro -->
+                                    <circle cx="100" cy="100" r="8" fill="url(#grad1)" opacity="1" filter="url(#glow)"/>
                                 </svg>
-
-                                <!-- Ícono central -->
-                                <div class="absolute inset-0 flex items-center justify-center">
-                                    <div class="text-5xl">⚡</div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Digital Lines -->
-        <div class="absolute top-10 left-10 w-40 h-40 border border-cyan-neon/20 rounded-full"></div>
-        <div class="absolute bottom-10 right-10 w-32 h-32 border border-violet-neon/20 rounded-full"></div>
     </section>
 
-    <!-- Productos Destacados -->
-    <section id="productos" class="py-20 px-6 bg-gradient-to-b from-tech-darker via-tech-darker to-tech-dark relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 space-y-4">
-                <h3 class="text-4xl md:text-5xl font-display font-bold">
-                    <span class="bg-gradient-to-r from-cyan-neon to-violet-neon bg-clip-text text-transparent">
-                        Productos Destacados
+    <!-- Sección de Productos Premium -->
+    <section id="productos" class="py-32 px-6 relative overflow-hidden">
+        <!-- Background glow -->
+        <div class="absolute inset-0">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-violet-neon/10 rounded-full filter blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-cyan-neon/10 rounded-full filter blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <!-- Header Sección -->
+            <div class="text-center mb-20 space-y-6">
+                <div class="inline-block px-6 py-3 glass rounded-full shadow-glow-cyan">
+                    <span class="text-cyan-neon font-bold text-sm">CATÁLOGO PREMIUM</span>
+                </div>
+                <h2 class="text-6xl md:text-7xl font-display font-black">
+                    <span class="bg-gradient-to-r from-cyan-neon to-violet-neon bg-clip-text text-transparent neon-glow">
+                        PRODUCTOS DESTACADOS
                     </span>
-                </h3>
-                <p class="text-gray-400 max-w-2xl mx-auto text-lg">
-                    Componentes electrónicos premium de máxima precisión para tus proyectos
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    Componentes de precisión y servicios técnicos que marcan la diferencia
                 </p>
             </div>
 
             <!-- Productos Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
                 <!-- Producto 1: Potenciómetro -->
-                <div class="group relative card-hover">
-                    <div class="relative bg-gradient-to-br from-cyan-neon/5 to-transparent border border-cyan-neon/30 rounded-2xl p-8 h-full overflow-hidden">
-                        <div class="absolute top-0 right-0 w-40 h-40 bg-cyan-neon/10 rounded-full -mr-20 -mt-20 group-hover:scale-150 transition-transform duration-500"></div>
-                        
-                        <div class="relative z-10">
-                            <div class="flex items-center justify-between mb-6">
-                                <div class="w-16 h-16 bg-gradient-to-br from-cyan-neon to-primary-blue rounded-xl flex items-center justify-center text-2xl glow-cyan">
-                                    🎚️
-                                </div>
-                                <span class="text-xs font-semibold text-cyan-neon bg-cyan-neon/10 px-3 py-1 rounded-full">Premium</span>
+                <div class="group card-3d glass rounded-3xl p-8 overflow-hidden shadow-glow-cyan">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-cyan-neon/20 to-transparent rounded-full -mr-20 -mt-20 group-hover:scale-150 transition-transform duration-700 blur-2xl"></div>
+                    
+                    <div class="relative z-10 space-y-6">
+                        <!-- Icon con glow -->
+                        <div class="flex items-center justify-between">
+                            <div class="w-20 h-20 rounded-2xl bg-gradient-cyan-violet flex items-center justify-center text-4xl shadow-glow-cyan group-hover:shadow-lg transition-all">
+                                🎚️
                             </div>
+                            <span class="text-xs font-black px-4 py-2 rounded-full bg-cyan-neon/20 text-cyan-neon border border-cyan-neon/50">PREMIUM</span>
+                        </div>
 
-                            <h4 class="text-2xl font-bold mb-2">Potenciómetro Lineal</h4>
-                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">
-                                Alta precisión para audio profesional, electrónica e instrumentación. Tolerancia ±5%, resistencia de película de carbón de larga vida útil.
+                        <div class="space-y-3">
+                            <h3 class="text-2xl font-display font-bold">Potenciómetro Lineal</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Alta precisión para audio profesional y electrónica. Tolerancia ±5%, ciclos de vida garantizados.
                             </p>
+                        </div>
 
-                            <div class="space-y-3 mb-6">
-                                <div class="flex items-center space-x-2 text-sm">
-                                    <span class="text-cyan-neon">✓</span>
-                                    <span>Precisión certified</span>
-                                </div>
-                                <div class="flex items-center space-x-2 text-sm">
-                                    <span class="text-cyan-neon">✓</span>
-                                    <span>1M ciclos garantizados</span>
-                                </div>
-                                <div class="flex items-center space-x-2 text-sm">
-                                    <span class="text-cyan-neon">✓</span>
-                                    <span>Entrega inmediata</span>
-                                </div>
+                        <!-- Features -->
+                        <div class="space-y-3 py-4 border-y border-cyan-neon/20">
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 bg-cyan-neon rounded-full"></span>
+                                <span>Precisión certificada</span>
                             </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 bg-cyan-neon rounded-full"></span>
+                                <span>1M ciclos garantizados</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 bg-cyan-neon rounded-full"></span>
+                                <span>Stock inmediato</span>
+                            </div>
+                        </div>
 
-                            <div class="flex gap-3">
-                                <a href="https://wa.me/549XXXXXXXXXX?text=Interesado%20en%20Potenci%C3%B3metro%20Lineal" target="_blank"
-                                   class="flex-1 py-3 bg-gradient-to-r from-cyan-neon to-primary-blue text-black rounded-lg font-semibold text-center btn-glow hover:shadow-lg transition-all">
-                                    Consultar
-                                </a>
-                                <button class="px-4 py-3 border border-cyan-neon/50 text-cyan-neon rounded-lg hover:bg-cyan-neon/10 transition-all">
-                                    📋
-                                </button>
-                            </div>
+                        <!-- Buttons -->
+                        <div class="flex gap-3 pt-4">
+                            <a href="https://wa.me/549XXXXXXXXXX?text=Interesado%20en%20Potenci%C3%B3metro" target="_blank"
+                               class="flex-1 py-3 bg-gradient-cyan-violet text-black rounded-xl font-bold btn-laser shadow-glow-cyan hover:shadow-lg transition-all text-center">
+                                Consultar
+                            </a>
+                            <button class="px-4 py-3 glass rounded-xl border border-cyan-neon/50 hover:border-cyan-neon hover:bg-cyan-neon/10 transition-all">
+                                📋
+                            </button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Producto 2: Fuente LED -->
-                <div class="group relative card-hover">
-                    <div class="relative bg-gradient-to-br from-violet-neon/5 to-transparent border border-violet-neon/30 rounded-2xl p-8 h-full overflow-hidden">
-                        <div class="absolute top-0 right-0 w-40 h-40 bg-violet-neon/10 rounded-full -mr-20 -mt-20 group-hover:scale-150 transition-transform duration-500"></div>
-                        
-                        <div class="relative z-10">
-                            <div class="flex items-center justify-between mb-6">
-                                <div class="w-16 h-16 bg-gradient-to-br from-violet-neon to-accent-pink rounded-xl flex items-center justify-center text-2xl glow-violet">
-                                    💡
-                                </div>
-                                <span class="text-xs font-semibold text-violet-neon bg-violet-neon/10 px-3 py-1 rounded-full">Stock</span>
+                <div class="group card-3d glass rounded-3xl p-8 overflow-hidden shadow-glow-violet">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-violet-neon/20 to-transparent rounded-full -mr-20 -mt-20 group-hover:scale-150 transition-transform duration-700 blur-2xl"></div>
+                    
+                    <div class="relative z-10 space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="w-20 h-20 rounded-2xl bg-gradient-violet-pink flex items-center justify-center text-4xl shadow-glow-violet group-hover:shadow-lg transition-all">
+                                💡
                             </div>
+                            <span class="text-xs font-black px-4 py-2 rounded-full bg-violet-neon/20 text-violet-neon border border-violet-neon/50">STOCK</span>
+                        </div>
 
-                            <h4 class="text-2xl font-bold mb-2">Fuente LED 12V</h4>
-                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">
-                                Fuente estabilizada profesional 12V DC. Ideal para sistemas de iluminación LED, tiras RGB y controladores. Certificación industrial.
+                        <div class="space-y-3">
+                            <h3 class="text-2xl font-display font-bold">Fuente LED 12V</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Profesional 12V DC estabilizada. Protección térmica, ideal para sistemas RGB y controladores.
                             </p>
+                        </div>
 
-                            <div class="space-y-3 mb-6">
-                                <div class="flex items-center space-x-2 text-sm">
-                                    <span class="text-violet-neon">✓</span>
-                                    <span>Salida regulada</span>
-                                </div>
-                                <div class="flex items-center space-x-2 text-sm">
-                                    <span class="text-violet-neon">✓</span>
-                                    <span>Protección térmica</span>
-                                </div>
-                                <div class="flex items-center space-x-2 text-sm">
-                                    <span class="text-violet-neon">✓</span>
-                                    <span>Garantía 2 años</span>
-                                </div>
+                        <div class="space-y-3 py-4 border-y border-violet-neon/20">
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 bg-violet-neon rounded-full"></span>
+                                <span>Salida regulada</span>
                             </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 bg-violet-neon rounded-full"></span>
+                                <span>Protección térmica</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 bg-violet-neon rounded-full"></span>
+                                <span>Garantía 2 años</span>
+                            </div>
+                        </div>
 
-                            <div class="flex gap-3">
-                                <a href="https://wa.me/549XXXXXXXXXX?text=Interesado%20en%20Fuente%20LED%2012V" target="_blank"
-                                   class="flex-1 py-3 bg-gradient-to-r from-violet-neon to-accent-pink text-white rounded-lg font-semibold text-center btn-glow hover:shadow-lg transition-all">
-                                    Consultar
-                                </a>
-                                <button class="px-4 py-3 border border-violet-neon/50 text-violet-neon rounded-lg hover:bg-violet-neon/10 transition-all">
-                                    📋
-                                </button>
-                            </div>
+                        <div class="flex gap-3 pt-4">
+                            <a href="https://wa.me/549XXXXXXXXXX?text=Interesado%20en%20Fuente%20LED" target="_blank"
+                               class="flex-1 py-3 bg-gradient-violet-pink text-white rounded-xl font-bold btn-laser shadow-glow-violet hover:shadow-lg transition-all text-center">
+                                Consultar
+                            </a>
+                            <button class="px-4 py-3 glass rounded-xl border border-violet-neon/50 hover:border-violet-neon hover:bg-violet-neon/10 transition-all">
+                                📋
+                            </button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Producto 3: Controladora DJ -->
-                <div class="group relative card-hover">
-                    <div class="relative bg-gradient-to-br from-lime-neon/5 to-transparent border border-lime-neon/30 rounded-2xl p-8 h-full overflow-hidden">
-                        <div class="absolute top-0 right-0 w-40 h-40 bg-lime-neon/10 rounded-full -mr-20 -mt-20 group-hover:scale-150 transition-transform duration-500"></div>
-                        
-                        <div class="relative z-10">
-                            <div class="flex items-center justify-between mb-6">
-                                <div class="w-16 h-16 bg-gradient-to-br from-lime-neon to-cyan-neon rounded-xl flex items-center justify-center text-2xl glow-lime">
-                                    🎵
-                                </div>
-                                <span class="text-xs font-semibold text-lime-neon bg-lime-neon/10 px-3 py-1 rounded-full">Reparación</span>
+                <div class="group card-3d glass rounded-3xl p-8 overflow-hidden shadow-glow-lime">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-lime-neon/20 to-transparent rounded-full -mr-20 -mt-20 group-hover:scale-150 transition-transform duration-700 blur-2xl"></div>
+                    
+                    <div class="relative z-10 space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="w-20 h-20 rounded-2xl bg-gradient-blue-lime flex items-center justify-center text-4xl shadow-glow-lime group-hover:shadow-lg transition-all">
+                                🎵
                             </div>
+                            <span class="text-xs font-black px-4 py-2 rounded-full bg-lime-neon/20 text-lime-neon border border-lime-neon/50">SERVICIO</span>
+                        </div>
 
-                            <h4 class="text-2xl font-bold mb-2">Consola DJ Repuestos</h4>
-                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">
-                                Componentes y repuestos para consolas DJ profesionales. Faders, encoders, circuit boards y módulos de audio de marcas líderes.
+                        <div class="space-y-3">
+                            <h3 class="text-2xl font-display font-bold">Repuestos DJ</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Componentes especializados para consolas DJ. Faders, encoders y módulos de marcas líderes.
                             </p>
+                        </div>
 
-                            <div class="space-y-3 mb-6">
-                                <div class="flex items-center space-x-2 text-sm">
-                                    <span class="text-lime-neon">✓</span>
-                                    <span>Compatibilidad universal</span>
-                                </div>
-                                <div class="flex items-center space-x-2 text-sm">
-                                    <span class="text-lime-neon">✓</span>
-                                    <span>Diagnóstico gratuito</span>
-                                </div>
-                                <div class="flex items-center space-x-2 text-sm">
-                                    <span class="text-lime-neon">✓</span>
-                                    <span>Servicio técnico</span>
-                                </div>
+                        <div class="space-y-3 py-4 border-y border-lime-neon/20">
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 bg-lime-neon rounded-full"></span>
+                                <span>Compatibilidad universal</span>
                             </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 bg-lime-neon rounded-full"></span>
+                                <span>Diagnóstico gratuito</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 bg-lime-neon rounded-full"></span>
+                                <span>Servicio técnico</span>
+                            </div>
+                        </div>
 
-                            <div class="flex gap-3">
-                                <a href="https://wa.me/549XXXXXXXXXX?text=Interesado%20en%20Repuestos%20DJ" target="_blank"
-                                   class="flex-1 py-3 bg-gradient-to-r from-lime-neon to-cyan-neon text-black rounded-lg font-semibold text-center btn-glow hover:shadow-lg transition-all">
-                                    Consultar
-                                </a>
-                                <button class="px-4 py-3 border border-lime-neon/50 text-lime-neon rounded-lg hover:bg-lime-neon/10 transition-all">
-                                    📋
-                                </button>
-                            </div>
+                        <div class="flex gap-3 pt-4">
+                            <a href="https://wa.me/549XXXXXXXXXX?text=Interesado%20en%20Repuestos%20DJ" target="_blank"
+                               class="flex-1 py-3 bg-gradient-blue-lime text-black rounded-xl font-bold btn-laser shadow-glow-lime hover:shadow-lg transition-all text-center">
+                                Consultar
+                            </a>
+                            <button class="px-4 py-3 glass rounded-xl border border-lime-neon/50 hover:border-lime-neon hover:bg-lime-neon/10 transition-all">
+                                📋
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Producto 4: Componentes Surtidos -->
-                <div class="group relative card-hover">
-                    <div class="relative bg-gradient-to-br from-primary-blue/5 to-transparent border border-primary-blue/30 rounded-2xl p-8 h-full overflow-hidden">
-                        <div class="absolute top-0 right-0 w-40 h-40 bg-primary-blue/10 rounded-full -mr-20 -mt-20 group-hover:scale-150 transition-transform duration-500"></div>
-                        
-                        <div class="relative z-10">
-                            <div class="flex items-center justify-between mb-6">
-                                <div class="w-16 h-16 bg-gradient-to-br from-primary-blue to-cyan-neon rounded-xl flex items-center justify-center text-2xl">
-                                    🔧
-                                </div>
-                                <span class="text-xs font-semibold text-primary-blue bg-primary-blue/10 px-3 py-1 rounded-full">Variado</span>
+                <!-- Producto 4: Componentes -->
+                <div class="group card-3d glass rounded-3xl p-8 overflow-hidden shadow-glow-cyan md:col-span-2 lg:col-span-1">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-cyan-neon/20 to-transparent rounded-full -mr-20 -mt-20 group-hover:scale-150 transition-transform duration-700 blur-2xl"></div>
+                    
+                    <div class="relative z-10 space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="w-20 h-20 rounded-2xl bg-gradient-cyan-violet flex items-center justify-center text-4xl shadow-glow-cyan group-hover:shadow-lg transition-all">
+                                🔧
                             </div>
+                            <span class="text-xs font-black px-4 py-2 rounded-full bg-cyan-neon/20 text-cyan-neon border border-cyan-neon/50">SURTIDOS</span>
+                        </div>
 
-                            <h4 class="text-2xl font-bold mb-2">Componentes Electrónicos</h4>
-                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">
-                                Resistencias, capacitores, diodos, transistores, circuitos integrados y más. Disponibles en presentaciones de componentes surtidos.
+                        <div class="space-y-3">
+                            <h3 class="text-2xl font-display font-bold">Componentes</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Resistencias, capacitores, transistores y circuitos integrados de máxima calidad.
                             </p>
+                        </div>
 
-                            <div class="space-y-3 mb-6">
-                                <div class="flex items-center space-x-2 text-sm">
-                                    <span class="text-primary-blue">✓</span>
-                                    <span>Stock permanente</span>
-                                </div>
-                                <div class="flex items-center space-x-2 text-sm">
-                                    <span class="text-primary-blue">✓</span>
-                                    <span>Certificado de origen</span>
-                                </div>
-                                <div class="flex items-center space-x-2 text-sm">
-                                    <span class="text-primary-blue">✓</span>
-                                    <span>Ofertas por volumen</span>
-                                </div>
+                        <div class="space-y-3 py-4 border-y border-cyan-neon/20">
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 bg-cyan-neon rounded-full"></span>
+                                <span>Stock permanente</span>
                             </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 bg-cyan-neon rounded-full"></span>
+                                <span>Certificado origen</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 bg-cyan-neon rounded-full"></span>
+                                <span>Ofertas volumen</span>
+                            </div>
+                        </div>
 
-                            <div class="flex gap-3">
-                                <a href="https://wa.me/549XXXXXXXXXX?text=Interesado%20en%20Componentes%20Electr%C3%B3nicos" target="_blank"
-                                   class="flex-1 py-3 bg-gradient-to-r from-primary-blue to-cyan-neon text-white rounded-lg font-semibold text-center btn-glow hover:shadow-lg transition-all">
-                                    Consultar
-                                </a>
-                                <button class="px-4 py-3 border border-primary-blue/50 text-primary-blue rounded-lg hover:bg-primary-blue/10 transition-all">
-                                    📋
-                                </button>
-                            </div>
+                        <div class="flex gap-3 pt-4">
+                            <a href="https://wa.me/549XXXXXXXXXX?text=Interesado%20en%20Componentes" target="_blank"
+                               class="flex-1 py-3 bg-gradient-cyan-violet text-black rounded-xl font-bold btn-laser shadow-glow-cyan hover:shadow-lg transition-all text-center">
+                                Consultar
+                            </a>
+                            <button class="px-4 py-3 glass rounded-xl border border-cyan-neon/50 hover:border-cyan-neon hover:bg-cyan-neon/10 transition-all">
+                                📋
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Producto 5: Iluminación LED -->
-                <div class="group relative card-hover">
-                    <div class="relative bg-gradient-to-br from-accent-pink/5 to-transparent border border-accent-pink/30 rounded-2xl p-8 h-full overflow-hidden">
-                        <div class="absolute top-0 right-0 w-40 h-40 bg-accent-pink/10 rounded-full -mr-20 -mt-20 group-hover:scale-150 transition-transform duration-500"></div>
-                        
-                        <div class="relative z-10">
-                            <div class="flex items-center justify-between mb-6">
-                                <div class="w-16 h-16 bg-gradient-to-br from-accent-pink to-violet-neon rounded-xl flex items-center justify-center text-2xl">
-                                    ✨
-                                </div>
-                                <span class="text-xs font-semibold text-accent-pink bg-accent-pink/10 px-3 py-1 rounded-full">Lighting</span>
+                <!-- Producto 5: Tiras LED -->
+                <div class="group card-3d glass rounded-3xl p-8 overflow-hidden shadow-glow-violet md:col-span-2 lg:col-span-1">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-violet-neon/20 to-transparent rounded-full -mr-20 -mt-20 group-hover:scale-150 transition-transform duration-700 blur-2xl"></div>
+                    
+                    <div class="relative z-10 space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="w-20 h-20 rounded-2xl bg-gradient-violet-pink flex items-center justify-center text-4xl shadow-glow-violet group-hover:shadow-lg transition-all">
+                                ✨
                             </div>
+                            <span class="text-xs font-black px-4 py-2 rounded-full bg-violet-neon/20 text-violet-neon border border-violet-neon/50">LIGHTING</span>
+                        </div>
 
-                            <h4 class="text-2xl font-bold mb-2">Tiras y Módulos LED</h4>
-                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">
-                                Tiras LED RGB, RGBW, controladores inalámbricos y módulos de iluminación. Soluciones profesionales para decoración y ambientación.
+                        <div class="space-y-3">
+                            <h3 class="text-2xl font-display font-bold">Tiras LED RGB</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Tiras LED RGB/RGBW, controladores inalámbricos y módulos de iluminación profesional.
                             </p>
+                        </div>
 
-                            <div class="space-y-3 mb-6">
-                                <div class="flex items-center space-x-2 text-sm">
-                                    <span class="text-accent-pink">✓</span>
-                                    <span>Control remoto</span>
-                                </div>
-                                <div class="flex items-center space-x-2 text-sm">
-                                    <span class="text-accent-pink">✓</span>
-                                    <span>Bajo consumo</span>
-                                </div>
-                                <div class="flex items-center space-x-2 text-sm">
-                                    <span class="text-accent-pink">✓</span>
-                                    <span>Programación personalizada</span>
-                                </div>
+                        <div class="space-y-3 py-4 border-y border-violet-neon/20">
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 bg-violet-neon rounded-full"></span>
+                                <span>Control remoto</span>
                             </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 bg-violet-neon rounded-full"></span>
+                                <span>Bajo consumo</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 bg-violet-neon rounded-full"></span>
+                                <span>Programación custom</span>
+                            </div>
+                        </div>
 
-                            <div class="flex gap-3">
-                                <a href="https://wa.me/549XXXXXXXXXX?text=Interesado%20en%20Tiras%20LED" target="_blank"
-                                   class="flex-1 py-3 bg-gradient-to-r from-accent-pink to-violet-neon text-white rounded-lg font-semibold text-center btn-glow hover:shadow-lg transition-all">
-                                    Consultar
-                                </a>
-                                <button class="px-4 py-3 border border-accent-pink/50 text-accent-pink rounded-lg hover:bg-accent-pink/10 transition-all">
-                                    📋
-                                </button>
-                            </div>
+                        <div class="flex gap-3 pt-4">
+                            <a href="https://wa.me/549XXXXXXXXXX?text=Interesado%20en%20Tiras%20LED" target="_blank"
+                               class="flex-1 py-3 bg-gradient-violet-pink text-white rounded-xl font-bold btn-laser shadow-glow-violet hover:shadow-lg transition-all text-center">
+                                Consultar
+                            </a>
+                            <button class="px-4 py-3 glass rounded-xl border border-violet-neon/50 hover:border-violet-neon hover:bg-violet-neon/10 transition-all">
+                                📋
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Producto 6: Servicios Técnicos -->
-                <div class="group relative card-hover md:col-span-2 lg:col-span-1">
-                    <div class="relative bg-gradient-to-br from-lime-neon/5 to-transparent border border-lime-neon/30 rounded-2xl p-8 h-full overflow-hidden">
-                        <div class="absolute top-0 right-0 w-40 h-40 bg-lime-neon/10 rounded-full -mr-20 -mt-20 group-hover:scale-150 transition-transform duration-500"></div>
-                        
-                        <div class="relative z-10">
-                            <div class="flex items-center justify-between mb-6">
-                                <div class="w-16 h-16 bg-gradient-to-br from-lime-neon to-primary-blue rounded-xl flex items-center justify-center text-2xl">
-                                    🔬
-                                </div>
-                                <span class="text-xs font-semibold text-lime-neon bg-lime-neon/10 px-3 py-1 rounded-full">Servicio</span>
+                <!-- Producto 6: Diagnóstico -->
+                <div class="group card-3d glass rounded-3xl p-8 overflow-hidden shadow-glow-lime md:col-span-2 lg:col-span-1">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-lime-neon/20 to-transparent rounded-full -mr-20 -mt-20 group-hover:scale-150 transition-transform duration-700 blur-2xl"></div>
+                    
+                    <div class="relative z-10 space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="w-20 h-20 rounded-2xl bg-gradient-blue-lime flex items-center justify-center text-4xl shadow-glow-lime group-hover:shadow-lg transition-all">
+                                🔬
                             </div>
+                            <span class="text-xs font-black px-4 py-2 rounded-full bg-lime-neon/20 text-lime-neon border border-lime-neon/50">PREMIUM</span>
+                        </div>
 
-                            <h4 class="text-2xl font-bold mb-2">Diagnóstico Técnico</h4>
-                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">
-                                Análisis especializado de equipos electrónicos. Identificación de fallos, presupuesto sin compromiso y soluciones personalizadas.
+                        <div class="space-y-3">
+                            <h3 class="text-2xl font-display font-bold">Diagnóstico Técnico</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Análisis especializado avanzado. Identificación completa de fallos y soluciones personalizadas.
                             </p>
+                        </div>
 
-                            <div class="space-y-3 mb-6">
-                                <div class="flex items-center space-x-2 text-sm">
-                                    <span class="text-lime-neon">✓</span>
-                                    <span>Equipo certificado</span>
-                                </div>
-                                <div class="flex items-center space-x-2 text-sm">
-                                    <span class="text-lime-neon">✓</span>
-                                    <span>Presupuesto gratuito</span>
-                                </div>
-                                <div class="flex items-center space-x-2 text-sm">
-                                    <span class="text-lime-neon">✓</span>
-                                    <span>Turnaround rápido</span>
-                                </div>
+                        <div class="space-y-3 py-4 border-y border-lime-neon/20">
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 bg-lime-neon rounded-full"></span>
+                                <span>Equipo certificado</span>
                             </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 bg-lime-neon rounded-full"></span>
+                                <span>Presupuesto gratis</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 bg-lime-neon rounded-full"></span>
+                                <span>Turnaround rápido</span>
+                            </div>
+                        </div>
 
-                            <div class="flex gap-3">
-                                <a href="https://wa.me/549XXXXXXXXXX?text=Solicito%20Diagn%C3%B3stico%20T%C3%A9cnico" target="_blank"
-                                   class="flex-1 py-3 bg-gradient-to-r from-lime-neon to-primary-blue text-black rounded-lg font-semibold text-center btn-glow hover:shadow-lg transition-all">
-                                    Solicitar
-                                </a>
-                                <button class="px-4 py-3 border border-lime-neon/50 text-lime-neon rounded-lg hover:bg-lime-neon/10 transition-all">
-                                    📋
-                                </button>
-                            </div>
+                        <div class="flex gap-3 pt-4">
+                            <a href="https://wa.me/549XXXXXXXXXX?text=Solicito%20Diagn%C3%B3stico%20T%C3%A9cnico" target="_blank"
+                               class="flex-1 py-3 bg-gradient-blue-lime text-black rounded-xl font-bold btn-laser shadow-glow-lime hover:shadow-lg transition-all text-center">
+                                Solicitar
+                            </a>
+                            <button class="px-4 py-3 glass rounded-xl border border-lime-neon/50 hover:border-lime-neon hover:bg-lime-neon/10 transition-all">
+                                📋
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -653,242 +827,322 @@
         </div>
     </section>
 
-    <!-- Servicios Técnicos -->
-    <section id="servicios" class="py-20 px-6 bg-tech-darker relative overflow-hidden">
+    <!-- Servicios Técnicos Premium -->
+    <section id="servicios" class="py-32 px-6 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute -top-40 left-0 w-80 h-80 bg-gradient-to-br from-cyan-neon/10 to-transparent rounded-full filter blur-3xl"></div>
+            <div class="absolute -bottom-40 right-0 w-80 h-80 bg-gradient-to-br from-violet-neon/10 to-transparent rounded-full filter blur-3xl"></div>
+        </div>
+
         <div class="max-w-7xl mx-auto relative z-10">
-            <div class="text-center mb-16">
-                <h3 class="text-4xl md:text-5xl font-display font-bold mb-4">
-                    <span class="bg-gradient-to-r from-cyan-neon to-lime-neon bg-clip-text text-transparent">
-                        Servicios Técnicos Especializados
+            <!-- Header -->
+            <div class="text-center mb-20 space-y-6">
+                <div class="inline-block px-6 py-3 glass rounded-full shadow-glow-violet">
+                    <span class="text-violet-neon font-bold text-sm">SERVICIOS ESPECIALIZADOS</span>
+                </div>
+                <h2 class="text-6xl md:text-7xl font-display font-black">
+                    <span class="bg-gradient-to-r from-violet-neon to-lime-neon bg-clip-text text-transparent neon-glow">
+                        REPARACIONES TÉCNICAS
                     </span>
-                </h3>
-                <p class="text-gray-400 max-w-2xl mx-auto text-lg">
-                    Reparaciones profesionales, diagnóstico avanzado y soluciones técnicas de precisión
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    Servicios de precision con garantía certificada y respuesta en 24 horas
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Servicios Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
                 <!-- Servicio 1 -->
                 <div class="group relative">
-                    <div class="bg-gradient-to-br from-cyan-neon/10 to-transparent border border-cyan-neon/40 rounded-xl p-6 h-full hover:border-cyan-neon/70 hover:shadow-lg transition-all duration-300 cursor-pointer">
-                        <div class="text-4xl mb-4 transform group-hover:scale-110 transition-transform">📺</div>
-                        <h4 class="text-xl font-bold mb-2">Reparación TV</h4>
-                        <p class="text-gray-400 text-sm mb-4">
-                            LED, LCD, OLED y Smart TV. Reparación de paneles, fuentes y electrónica.
-                        </p>
-                        <ul class="space-y-2 text-xs text-gray-500">
-                            <li>✓ No enciende</li>
-                            <li>✓ Sin imagen/sonido</li>
-                            <li>✓ Fallas intermitentes</li>
-                        </ul>
+                    <div class="glass rounded-2xl p-8 h-full border border-cyan-neon/20 hover:border-cyan-neon/60 shadow-glow-cyan group-hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-cyan-neon/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        
+                        <div class="relative z-10 space-y-4">
+                            <div class="text-6xl transform group-hover:scale-125 group-hover:-rotate-12 transition-transform duration-300">📺</div>
+                            <h3 class="text-2xl font-bold text-cyan-neon">Reparación TV</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                LED, LCD, OLED y Smart TV. Reparación de paneles, fuentes y circuitos.
+                            </p>
+                            <ul class="space-y-2 text-xs text-gray-500">
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1 h-1 bg-cyan-neon rounded-full"></span>
+                                    No enciende
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1 h-1 bg-cyan-neon rounded-full"></span>
+                                    Sin imagen/sonido
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1 h-1 bg-cyan-neon rounded-full"></span>
+                                    Fallos intermitentes
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Servicio 2 -->
                 <div class="group relative">
-                    <div class="bg-gradient-to-br from-violet-neon/10 to-transparent border border-violet-neon/40 rounded-xl p-6 h-full hover:border-violet-neon/70 hover:shadow-lg transition-all duration-300 cursor-pointer">
-                        <div class="text-4xl mb-4 transform group-hover:scale-110 transition-transform">💡</div>
-                        <h4 class="text-xl font-bold mb-2">Reparación LED</h4>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Tiras LED, módulos, controladores y fuentes de iluminación.
-                        </p>
-                        <ul class="space-y-2 text-xs text-gray-500">
-                            <li>✓ No prende</li>
-                            <li>✓ Color defectuoso</li>
-                            <li>✓ Control remoto</li>
-                        </ul>
+                    <div class="glass rounded-2xl p-8 h-full border border-violet-neon/20 hover:border-violet-neon/60 shadow-glow-violet group-hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-violet-neon/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        
+                        <div class="relative z-10 space-y-4">
+                            <div class="text-6xl transform group-hover:scale-125 group-hover:-rotate-12 transition-transform duration-300">💡</div>
+                            <h3 class="text-2xl font-bold text-violet-neon">Reparación LED</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Tiras LED, módulos, controladores y fuentes de iluminación.
+                            </p>
+                            <ul class="space-y-2 text-xs text-gray-500">
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1 h-1 bg-violet-neon rounded-full"></span>
+                                    No prende
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1 h-1 bg-violet-neon rounded-full"></span>
+                                    Color defectuoso
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1 h-1 bg-violet-neon rounded-full"></span>
+                                    Control remoto
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Servicio 3 -->
                 <div class="group relative">
-                    <div class="bg-gradient-to-br from-lime-neon/10 to-transparent border border-lime-neon/40 rounded-xl p-6 h-full hover:border-lime-neon/70 hover:shadow-lg transition-all duration-300 cursor-pointer">
-                        <div class="text-4xl mb-4 transform group-hover:scale-110 transition-transform">🎵</div>
-                        <h4 class="text-xl font-bold mb-2">Consolas DJ</h4>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Reparación y mantenimiento de equipos DJ profesionales.
-                        </p>
-                        <ul class="space-y-2 text-xs text-gray-500">
-                            <li>✓ Faders y encoders</li>
-                            <li>✓ Placa base</li>
-                            <li>✓ Audio defectuoso</li>
-                        </ul>
+                    <div class="glass rounded-2xl p-8 h-full border border-lime-neon/20 hover:border-lime-neon/60 shadow-glow-lime group-hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-lime-neon/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        
+                        <div class="relative z-10 space-y-4">
+                            <div class="text-6xl transform group-hover:scale-125 group-hover:-rotate-12 transition-transform duration-300">🎵</div>
+                            <h3 class="text-2xl font-bold text-lime-neon">Consolas DJ</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Reparación y mantenimiento de equipos DJ profesionales.
+                            </p>
+                            <ul class="space-y-2 text-xs text-gray-500">
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1 h-1 bg-lime-neon rounded-full"></span>
+                                    Faders y encoders
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1 h-1 bg-lime-neon rounded-full"></span>
+                                    Placa base
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1 h-1 bg-lime-neon rounded-full"></span>
+                                    Audio defectuoso
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Servicio 4 -->
                 <div class="group relative">
-                    <div class="bg-gradient-to-br from-primary-blue/10 to-transparent border border-primary-blue/40 rounded-xl p-6 h-full hover:border-primary-blue/70 hover:shadow-lg transition-all duration-300 cursor-pointer">
-                        <div class="text-4xl mb-4 transform group-hover:scale-110 transition-transform">🔬</div>
-                        <h4 class="text-xl font-bold mb-2">Diagnóstico</h4>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Análisis especializado de cualquier dispositivo electrónico.
-                        </p>
-                        <ul class="space-y-2 text-xs text-gray-500">
-                            <li>✓ Equipamiento profesional</li>
-                            <li>✓ Presupuesto sin cargo</li>
-                            <li>✓ Soluciones personalizadas</li>
-                        </ul>
+                    <div class="glass rounded-2xl p-8 h-full border border-primary-blue/20 hover:border-primary-blue/60 shadow-glow-cyan group-hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-primary-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        
+                        <div class="relative z-10 space-y-4">
+                            <div class="text-6xl transform group-hover:scale-125 group-hover:-rotate-12 transition-transform duration-300">🔬</div>
+                            <h3 class="text-2xl font-bold text-primary-blue">Diagnóstico</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Análisis especializado de cualquier dispositivo electrónico.
+                            </p>
+                            <ul class="space-y-2 text-xs text-gray-500">
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1 h-1 bg-primary-blue rounded-full"></span>
+                                    Equipo certificado
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1 h-1 bg-primary-blue rounded-full"></span>
+                                    Presupuesto gratis
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1 h-1 bg-primary-blue rounded-full"></span>
+                                    Soluciones custom
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Garantía y Confianza -->
-            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="text-center space-y-4">
-                    <div class="w-16 h-16 bg-gradient-to-br from-cyan-neon to-primary-blue rounded-full flex items-center justify-center mx-auto text-2xl glow-cyan">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass rounded-2xl p-8 text-center space-y-4 border border-cyan-neon/20 shadow-glow-cyan hover:shadow-lg transition-all group">
+                    <div class="w-20 h-20 bg-gradient-cyan-violet rounded-2xl flex items-center justify-center mx-auto text-4xl shadow-glow-cyan group-hover:shadow-lg transition-all transform group-hover:scale-110">
                         ⭐
                     </div>
-                    <h5 class="font-bold text-lg">Garantía Certificada</h5>
-                    <p class="text-gray-400 text-sm">
-                        Todos los trabajos incluyen garantía de reparación por 3 meses
+                    <h4 class="text-2xl font-bold">Garantía Certificada</h4>
+                    <p class="text-gray-400">
+                        Todos los trabajos incluyen garantía de reparación por 3 meses mínimo
                     </p>
                 </div>
-                <div class="text-center space-y-4">
-                    <div class="w-16 h-16 bg-gradient-to-br from-violet-neon to-lime-neon rounded-full flex items-center justify-center mx-auto text-2xl glow-violet">
+                <div class="glass rounded-2xl p-8 text-center space-y-4 border border-violet-neon/20 shadow-glow-violet hover:shadow-lg transition-all group">
+                    <div class="w-20 h-20 bg-gradient-violet-pink rounded-2xl flex items-center justify-center mx-auto text-4xl shadow-glow-violet group-hover:shadow-lg transition-all transform group-hover:scale-110">
                         ⚡
                     </div>
-                    <h5 class="font-bold text-lg">Respuesta Rápida</h5>
-                    <p class="text-gray-400 text-sm">
-                        Contacto en menos de 24 horas para presupuesto y diagnóstico
+                    <h4 class="text-2xl font-bold">Respuesta Rápida</h4>
+                    <p class="text-gray-400">
+                        Contacto y presupuesto en menos de 24 horas garantizado
                     </p>
                 </div>
-                <div class="text-center space-y-4">
-                    <div class="w-16 h-16 bg-gradient-to-br from-lime-neon to-cyan-neon rounded-full flex items-center justify-center mx-auto text-2xl">
+                <div class="glass rounded-2xl p-8 text-center space-y-4 border border-lime-neon/20 shadow-glow-lime hover:shadow-lg transition-all group">
+                    <div class="w-20 h-20 bg-gradient-blue-lime rounded-2xl flex items-center justify-center mx-auto text-4xl shadow-glow-lime group-hover:shadow-lg transition-all transform group-hover:scale-110">
                         🎯
                     </div>
-                    <h5 class="font-bold text-lg">Precisión Técnica</h5>
-                    <p class="text-gray-400 text-sm">
-                        Equipo especializado y conocimiento avanzado en electrónica
+                    <h4 class="text-2xl font-bold">Precisión Técnica</h4>
+                    <p class="text-gray-400">
+                        Equipo especializado con 10+ años de experiencia avanzada
                     </p>
                 </div>
             </div>
         </div>
-
-        <!-- Background Elements -->
-        <div class="absolute top-20 left-10 w-72 h-72 bg-cyan-neon/5 rounded-full filter blur-3xl"></div>
-        <div class="absolute bottom-20 right-10 w-72 h-72 bg-violet-neon/5 rounded-full filter blur-3xl"></div>
     </section>
 
-    <!-- Cómo Comprar -->
-    <section id="proceso" class="py-20 px-6 bg-gradient-to-b from-tech-dark to-tech-darker relative">
-        <div class="max-w-6xl mx-auto relative z-10">
-            <div class="text-center mb-16">
-                <h3 class="text-4xl md:text-5xl font-display font-bold mb-4">
-                    <span class="bg-gradient-to-r from-lime-neon to-cyan-neon bg-clip-text text-transparent">
-                        Proceso de Compra Simple
+    <!-- Cómo Comprar - Proceso Premium -->
+    <section id="proceso" class="py-32 px-6 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-1/4 left-10 w-96 h-96 bg-lime-neon/10 rounded-full filter blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-10 w-96 h-96 bg-cyan-neon/10 rounded-full filter blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <!-- Header -->
+            <div class="text-center mb-20 space-y-6">
+                <div class="inline-block px-6 py-3 glass rounded-full shadow-glow-lime">
+                    <span class="text-lime-neon font-bold text-sm">PROCESO SIMPLE</span>
+                </div>
+                <h2 class="text-6xl md:text-7xl font-display font-black">
+                    <span class="bg-gradient-to-r from-lime-neon to-cyan-neon bg-clip-text text-transparent neon-glow">
+                        CÓMO COMPRAR
                     </span>
-                </h3>
-                <p class="text-gray-400 max-w-2xl mx-auto text-lg">
-                    4 pasos para obtener tus componentes o servicios técnicos
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    4 pasos simples para obtener tus componentes o servicios técnicos
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Pasos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
                 <!-- Paso 1 -->
-                <div class="relative">
-                    <div class="bg-gradient-to-br from-cyan-neon/10 border border-cyan-neon/40 rounded-xl p-8 text-center">
-                        <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r from-cyan-neon to-primary-blue text-white font-bold text-xl mb-4 glow-cyan">
+                <div class="relative group">
+                    <div class="glass rounded-2xl p-8 text-center space-y-4 border border-cyan-neon/20 shadow-glow-cyan hover:shadow-lg transition-all h-full">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-cyan-violet text-white font-display font-black text-2xl shadow-glow-cyan group-hover:shadow-lg transition-all transform group-hover:scale-110">
                             1
                         </div>
-                        <h4 class="text-xl font-bold mb-3">Elegir Producto</h4>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Selecciona el producto o servicio que necesitas en nuestro catálogo
+                        <h4 class="text-2xl font-bold">Elegir</h4>
+                        <p class="text-gray-400">
+                            Selecciona el producto o servicio en nuestro catálogo
                         </p>
-                        <div class="text-3xl">🛍️</div>
+                        <div class="text-5xl">🛍️</div>
                     </div>
-                    <div class="hidden lg:block absolute top-1/2 -right-6 transform -translate-y-1/2">
-                        <div class="w-12 h-1 bg-gradient-to-r from-cyan-neon to-transparent"></div>
+                    <div class="hidden lg:block absolute top-1/2 -right-8 transform -translate-y-1/2 z-20">
+                        <div class="w-16 h-1 bg-gradient-to-r from-cyan-neon to-transparent"></div>
                     </div>
                 </div>
 
                 <!-- Paso 2 -->
-                <div class="relative">
-                    <div class="bg-gradient-to-br from-violet-neon/10 border border-violet-neon/40 rounded-xl p-8 text-center">
-                        <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r from-violet-neon to-accent-pink text-white font-bold text-xl mb-4 glow-violet">
+                <div class="relative group">
+                    <div class="glass rounded-2xl p-8 text-center space-y-4 border border-violet-neon/20 shadow-glow-violet hover:shadow-lg transition-all h-full">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-violet-pink text-white font-display font-black text-2xl shadow-glow-violet group-hover:shadow-lg transition-all transform group-hover:scale-110">
                             2
                         </div>
-                        <h4 class="text-xl font-bold mb-3">Contactar</h4>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Envía tu consulta por WhatsApp o formulario de contacto
+                        <h4 class="text-2xl font-bold">Contactar</h4>
+                        <p class="text-gray-400">
+                            Envía consulta por WhatsApp o formulario de contacto
                         </p>
-                        <div class="text-3xl">💬</div>
+                        <div class="text-5xl">💬</div>
                     </div>
-                    <div class="hidden lg:block absolute top-1/2 -right-6 transform -translate-y-1/2">
-                        <div class="w-12 h-1 bg-gradient-to-r from-violet-neon to-transparent"></div>
+                    <div class="hidden lg:block absolute top-1/2 -right-8 transform -translate-y-1/2 z-20">
+                        <div class="w-16 h-1 bg-gradient-to-r from-violet-neon to-transparent"></div>
                     </div>
                 </div>
 
                 <!-- Paso 3 -->
-                <div class="relative">
-                    <div class="bg-gradient-to-br from-lime-neon/10 border border-lime-neon/40 rounded-xl p-8 text-center">
-                        <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r from-lime-neon to-cyan-neon text-black font-bold text-xl mb-4 glow-lime">
+                <div class="relative group">
+                    <div class="glass rounded-2xl p-8 text-center space-y-4 border border-lime-neon/20 shadow-glow-lime hover:shadow-lg transition-all h-full">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-blue-lime text-black font-display font-black text-2xl shadow-glow-lime group-hover:shadow-lg transition-all transform group-hover:scale-110">
                             3
                         </div>
-                        <h4 class="text-xl font-bold mb-3">Confirmar</h4>
-                        <p class="text-gray-400 text-sm mb-4">
+                        <h4 class="text-2xl font-bold">Confirmar</h4>
+                        <p class="text-gray-400">
                             Recibe presupuesto, disponibilidad y opciones de pago
                         </p>
-                        <div class="text-3xl">✅</div>
+                        <div class="text-5xl">✅</div>
                     </div>
-                    <div class="hidden lg:block absolute top-1/2 -right-6 transform -translate-y-1/2">
-                        <div class="w-12 h-1 bg-gradient-to-r from-lime-neon to-transparent"></div>
+                    <div class="hidden lg:block absolute top-1/2 -right-8 transform -translate-y-1/2 z-20">
+                        <div class="w-16 h-1 bg-gradient-to-r from-lime-neon to-transparent"></div>
                     </div>
                 </div>
 
                 <!-- Paso 4 -->
-                <div class="relative">
-                    <div class="bg-gradient-to-br from-primary-blue/10 border border-primary-blue/40 rounded-xl p-8 text-center">
-                        <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r from-primary-blue to-cyan-neon text-white font-bold text-xl mb-4">
+                <div class="relative group">
+                    <div class="glass rounded-2xl p-8 text-center space-y-4 border border-primary-blue/20 shadow-glow-cyan hover:shadow-lg transition-all h-full">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-cyan-violet text-white font-display font-black text-2xl shadow-glow-cyan group-hover:shadow-lg transition-all transform group-hover:scale-110">
                             4
                         </div>
-                        <h4 class="text-xl font-bold mb-3">Pagar y Recibir</h4>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Transferencia bancaria segura. Envío o retiro según lo acordado
+                        <h4 class="text-2xl font-bold">Pagar</h4>
+                        <p class="text-gray-400">
+                            Transferencia bancaria segura. Envío o retiro
                         </p>
-                        <div class="text-3xl">🚚</div>
+                        <div class="text-5xl">🚚</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Métodos de Pago -->
-            <div class="mt-16 bg-gradient-to-r from-cyan-neon/5 via-transparent to-violet-neon/5 border border-cyan-neon/20 rounded-2xl p-8">
-                <h4 class="text-2xl font-bold mb-8 text-center">
-                    <span class="bg-gradient-to-r from-cyan-neon to-violet-neon bg-clip-text text-transparent">
-                        Métodos de Pago y Contacto
+            <!-- Métodos de Pago Premium -->
+            <div class="glass rounded-3xl p-12 border border-cyan-neon/20 shadow-glow-cyan">
+                <h3 class="text-4xl font-display font-black text-center mb-12">
+                    <span class="bg-gradient-to-r from-cyan-neon to-violet-neon bg-clip-text text-transparent neon-glow">
+                        MÉTODOS DE PAGO Y CONTACTO
                     </span>
-                </h4>
+                </h3>
+
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="text-center space-y-3">
-                        <div class="text-4xl">💬</div>
-                        <h5 class="font-bold">WhatsApp</h5>
-                        <p class="text-gray-400 text-sm">
-                            Contacto directo y rápido. Envía fotos, consultas detalladas y recibe respuesta en horas.
-                        </p>
+                    <!-- WhatsApp -->
+                    <div class="glass rounded-2xl p-8 text-center space-y-6 border border-green-500/30 shadow-glow-cyan">
+                        <div class="text-6xl">💬</div>
+                        <div>
+                            <h4 class="text-2xl font-bold mb-3">WhatsApp Directo</h4>
+                            <p class="text-gray-400 mb-6">
+                                Contacto inmediato. Envía fotos, consultas detalladas y recibe respuesta en horas.
+                            </p>
+                        </div>
                         <a href="https://wa.me/549XXXXXXXXXX" target="_blank"
-                           class="inline-block mt-3 px-6 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold transition-all">
-                            Chatear Ahora
+                           class="inline-block px-8 py-3 bg-green-500 hover:bg-green-600 text-white rounded-xl font-bold btn-laser shadow-glow-cyan hover:shadow-lg transition-all">
+                            CHATEAR AHORA
                         </a>
                     </div>
-                    <div class="text-center space-y-3">
-                        <div class="text-4xl">🏦</div>
-                        <h5 class="font-bold">Transferencia</h5>
-                        <p class="text-gray-400 text-sm">
-                            Pago seguro por transferencia bancaria. Datos de cuenta enviados tras confirmar orden.
-                        </p>
-                        <div class="inline-block mt-3 px-6 py-2 bg-gradient-to-r from-primary-blue to-cyan-neon text-white rounded-lg font-semibold">
-                            Seguro y Rápido
+
+                    <!-- Transferencia -->
+                    <div class="glass rounded-2xl p-8 text-center space-y-6 border border-primary-blue/30 shadow-glow-cyan">
+                        <div class="text-6xl">🏦</div>
+                        <div>
+                            <h4 class="text-2xl font-bold mb-3">Transferencia Bancaria</h4>
+                            <p class="text-gray-400 mb-6">
+                                Pago seguro directo. Datos de cuenta enviados tras confirmar orden.
+                            </p>
+                        </div>
+                        <div class="inline-block px-8 py-3 bg-gradient-cyan-violet text-white rounded-xl font-bold">
+                            100% SEGURO
                         </div>
                     </div>
-                    <div class="text-center space-y-3">
-                        <div class="text-4xl">📧</div>
-                        <h5 class="font-bold">Formulario</h5>
-                        <p class="text-gray-400 text-sm">
-                            Completa nuestro formulario con tus datos y consulta. Respuesta dentro de 24h.
-                        </p>
+
+                    <!-- Formulario -->
+                    <div class="glass rounded-2xl p-8 text-center space-y-6 border border-violet-neon/30 shadow-glow-violet">
+                        <div class="text-6xl">📧</div>
+                        <div>
+                            <h4 class="text-2xl font-bold mb-3">Formulario</h4>
+                            <p class="text-gray-400 mb-6">
+                                Completa con tus datos y consulta. Respuesta dentro de 24h garantizado.
+                            </p>
+                        </div>
                         <a href="#contacto"
-                           class="inline-block mt-3 px-6 py-2 border-2 border-violet-neon text-violet-neon rounded-lg font-semibold hover:bg-violet-neon/10 transition-all">
-                            Ir al Formulario
+                           class="inline-block px-8 py-3 border-2 border-violet-neon text-violet-neon rounded-xl font-bold hover:bg-violet-neon/10 transition-all">
+                            IR AL FORMULARIO
                         </a>
                     </div>
                 </div>
@@ -896,186 +1150,264 @@
         </div>
     </section>
 
-    <!-- Sección de Confianza -->
-    <section class="py-20 px-6 bg-tech-darker">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h3 class="text-4xl md:text-5xl font-display font-bold mb-4">
-                    <span class="bg-gradient-to-r from-violet-neon to-lime-neon bg-clip-text text-transparent">
-                        ¿Por qué Confiar en Nosotros?
+    <!-- Sección de Confianza Premium -->
+    <section class="py-32 px-6 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute -top-40 right-1/4 w-96 h-96 bg-violet-neon/10 rounded-full filter blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-20 space-y-6">
+                <div class="inline-block px-6 py-3 glass rounded-full shadow-glow-violet">
+                    <span class="text-violet-neon font-bold text-sm">AUTORIDAD TÉCNICA</span>
+                </div>
+                <h2 class="text-6xl md:text-7xl font-display font-black">
+                    <span class="bg-gradient-to-r from-violet-neon to-lime-neon bg-clip-text text-transparent neon-glow">
+                        ¿POR QUÉ CONFIAR?
                     </span>
-                </h3>
+                </h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-gradient-to-br from-cyan-neon/5 to-transparent border border-cyan-neon/30 rounded-xl p-8 text-center space-y-4">
-                    <div class="text-5xl">🏆</div>
-                    <h5 class="font-bold text-xl">Experiencia</h5>
-                    <p class="text-gray-400">
-                        Más de 10 años en electrónica y servicios técnicos especializados
-                    </p>
+                <!-- Experiencia -->
+                <div class="group card-3d glass rounded-2xl p-8 border border-cyan-neon/20 shadow-glow-cyan hover:shadow-lg">
+                    <div class="space-y-4">
+                        <div class="w-16 h-16 rounded-xl bg-gradient-cyan-violet flex items-center justify-center text-4xl shadow-glow-cyan group-hover:shadow-lg transition-all transform group-hover:scale-110">
+                            🏆
+                        </div>
+                        <h4 class="text-2xl font-bold">Experiencia</h4>
+                        <p class="text-gray-400">
+                            10+ años en electrónica y servicios técnicos especializados de máximo nivel
+                        </p>
+                        <div class="pt-4 border-t border-cyan-neon/20">
+                            <span class="text-cyan-neon font-bold">500+ reparaciones exitosas</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-gradient-to-br from-violet-neon/5 to-transparent border border-violet-neon/30 rounded-xl p-8 text-center space-y-4">
-                    <div class="text-5xl">✨</div>
-                    <h5 class="font-bold text-xl">Calidad</h5>
-                    <p class="text-gray-400">
-                        Componentes premium y servicios con estándares de precisión máxima
-                    </p>
+
+                <!-- Calidad -->
+                <div class="group card-3d glass rounded-2xl p-8 border border-violet-neon/20 shadow-glow-violet hover:shadow-lg">
+                    <div class="space-y-4">
+                        <div class="w-16 h-16 rounded-xl bg-gradient-violet-pink flex items-center justify-center text-4xl shadow-glow-violet group-hover:shadow-lg transition-all transform group-hover:scale-110">
+                            ✨
+                        </div>
+                        <h4 class="text-2xl font-bold">Calidad Premium</h4>
+                        <p class="text-gray-400">
+                            Componentes y repuestos de marcas líderes con certificación internacional
+                        </p>
+                        <div class="pt-4 border-t border-violet-neon/20">
+                            <span class="text-violet-neon font-bold">Estándares de precisión máxima</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-gradient-to-br from-lime-neon/5 to-transparent border border-lime-neon/30 rounded-xl p-8 text-center space-y-4">
-                    <div class="text-5xl">⚡</div>
-                    <h5 class="font-bold text-xl">Rapidez</h5>
-                    <p class="text-gray-400">
-                        Respuesta en menos de 24h y turnaround rápido en reparaciones
-                    </p>
+
+                <!-- Rapidez -->
+                <div class="group card-3d glass rounded-2xl p-8 border border-lime-neon/20 shadow-glow-lime hover:shadow-lg">
+                    <div class="space-y-4">
+                        <div class="w-16 h-16 rounded-xl bg-gradient-blue-lime flex items-center justify-center text-4xl shadow-glow-lime group-hover:shadow-lg transition-all transform group-hover:scale-110">
+                            ⚡
+                        </div>
+                        <h4 class="text-2xl font-bold">Respuesta Rápida</h4>
+                        <p class="text-gray-400">
+                            Contacto en menos de 24h y turnaround acelerado en todas las reparaciones
+                        </p>
+                        <div class="pt-4 border-t border-lime-neon/20">
+                            <span class="text-lime-neon font-bold">Disponibilidad 24/7</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-gradient-to-br from-accent-pink/5 to-transparent border border-accent-pink/30 rounded-xl p-8 text-center space-y-4">
-                    <div class="text-5xl">🛡️</div>
-                    <h5 class="font-bold text-xl">Garantía</h5>
-                    <p class="text-gray-400">
-                        Garantía certificada de 3 meses en todos nuestros trabajos
-                    </p>
+
+                <!-- Garantía -->
+                <div class="group card-3d glass rounded-2xl p-8 border border-primary-blue/20 shadow-glow-cyan hover:shadow-lg">
+                    <div class="space-y-4">
+                        <div class="w-16 h-16 rounded-xl bg-gradient-cyan-violet flex items-center justify-center text-4xl shadow-glow-cyan group-hover:shadow-lg transition-all transform group-hover:scale-110">
+                            🛡️
+                        </div>
+                        <h4 class="text-2xl font-bold">Garantía Certificada</h4>
+                        <p class="text-gray-400">
+                            Garantía mínima de 3 meses en todos los trabajos realizados
+                        </p>
+                        <div class="pt-4 border-t border-primary-blue/20">
+                            <span class="text-primary-blue font-bold">Soporte técnico incluido</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contacto -->
-    <section id="contacto" class="py-20 px-6 bg-gradient-to-b from-tech-darker via-tech-dark to-tech-darker relative overflow-hidden">
-        <div class="max-w-4xl mx-auto relative z-10">
-            <div class="text-center mb-16">
-                <h3 class="text-4xl md:text-5xl font-display font-bold mb-4">
-                    <span class="bg-gradient-to-r from-cyan-neon to-violet-neon bg-clip-text text-transparent">
-                        Ponte en Contacto
+    <!-- Contacto Premium -->
+    <section id="contacto" class="py-32 px-6 relative overflow-hidden scan-effect">
+        <div class="absolute inset-0">
+            <div class="absolute -top-40 left-1/4 w-96 h-96 bg-cyan-neon/10 rounded-full filter blur-3xl"></div>
+            <div class="absolute -bottom-40 right-1/4 w-96 h-96 bg-violet-neon/10 rounded-full filter blur-3xl"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <!-- Header -->
+            <div class="text-center mb-16 space-y-6">
+                <div class="inline-block px-6 py-3 glass rounded-full shadow-glow-cyan">
+                    <span class="text-cyan-neon font-bold text-sm">CONTACTO</span>
+                </div>
+                <h2 class="text-6xl md:text-7xl font-display font-black">
+                    <span class="bg-gradient-to-r from-cyan-neon to-violet-neon bg-clip-text text-transparent neon-glow">
+                        PONTE EN CONTACTO
                     </span>
-                </h3>
-                <p class="text-gray-400 max-w-2xl mx-auto text-lg">
-                    Cuéntanos qué necesitas y te responderemos dentro de 24 horas
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    Cuéntanos qué necesitas. Respuesta garantizada en 24 horas
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <!-- Contenido Principal -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                 <!-- Formulario -->
-                <div class="bg-gradient-to-br from-cyan-neon/5 to-transparent border border-cyan-neon/30 rounded-2xl p-8">
-                    <form class="space-y-6">
-					<div>
-                            <label class="block text-sm font-semibold mb-2">Nombre Completo</label>
-                            <input type="text" placeholder="Tu nombre" 
-                                   class="w-full bg-tech-dark border border-cyan-neon/30 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-neon focus:glow-cyan transition-all">
+                <div class="glass rounded-3xl p-10 border border-cyan-neon/20 shadow-glow-cyan">
+                    <h3 class="text-2xl font-bold mb-8">Envía tu Consulta</h3>
+                    <form class="space-y-6" id="contactForm">
+                        <div>
+                            <label class="block text-sm font-bold mb-3 text-cyan-neon">Nombre Completo</label>
+                            <input type="text" placeholder="Tu nombre" required
+                                   class="w-full bg-tech-dark border border-cyan-neon/30 rounded-xl px-5 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-neon focus:shadow-glow-cyan transition-all focus:bg-tech-dark/80">
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-bold mb-3 text-cyan-neon">Email</label>
+                                <input type="email" placeholder="tu@email.com" required
+                                       class="w-full bg-tech-dark border border-cyan-neon/30 rounded-xl px-5 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-neon focus:shadow-glow-cyan transition-all focus:bg-tech-dark/80">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold mb-3 text-cyan-neon">WhatsApp</label>
+                                <input type="tel" placeholder="+54 9 XXXXXXXXXX" required
+                                       class="w-full bg-tech-dark border border-cyan-neon/30 rounded-xl px-5 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-neon focus:shadow-glow-cyan transition-all focus:bg-tech-dark/80">
+                            </div>
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold mb-2">Email</label>
-                            <input type="email" placeholder="tu@email.com" 
-                                   class="w-full bg-tech-dark border border-cyan-neon/30 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-neon focus:glow-cyan transition-all">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold mb-2">WhatsApp</label>
-                            <input type="tel" placeholder="+54 9 XXXXXXXXXX" 
-                                   class="w-full bg-tech-dark border border-cyan-neon/30 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-neon focus:glow-cyan transition-all">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold mb-2">Asunto</label>
-                            <select class="w-full bg-tech-dark border border-cyan-neon/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-neon transition-all">
+                            <label class="block text-sm font-bold mb-3 text-cyan-neon">Asunto</label>
+                            <select required class="w-full bg-tech-dark border border-cyan-neon/30 rounded-xl px-5 py-3 text-white focus:outline-none focus:border-cyan-neon focus:shadow-glow-cyan transition-all focus:bg-tech-dark/80">
                                 <option value="">Selecciona una opción</option>
                                 <option value="consulta">Consulta de Producto</option>
                                 <option value="reparacion">Solicitud de Reparación</option>
                                 <option value="diagnostico">Diagnóstico Técnico</option>
-                                <option value="otro">Otro</option>
+                                <option value="otro">Otra Consulta</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold mb-2">Mensaje</label>
-                            <textarea placeholder="Cuéntanos qué necesitas..." rows="5"
-                                      class="w-full bg-tech-dark border border-cyan-neon/30 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-neon focus:glow-cyan transition-all resize-none"></textarea>
+                            <label class="block text-sm font-bold mb-3 text-cyan-neon">Mensaje</label>
+                            <textarea placeholder="Cuéntanos qué necesitas..." rows="5" required
+                                      class="w-full bg-tech-dark border border-cyan-neon/30 rounded-xl px-5 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-neon focus:shadow-glow-cyan transition-all resize-none focus:bg-tech-dark/80"></textarea>
                         </div>
                         <button type="submit" 
-                                class="w-full py-3 bg-gradient-to-r from-cyan-neon to-primary-blue text-black rounded-lg font-semibold btn-glow glow-cyan hover:shadow-lg transition-all transform hover:scale-105">
-                            Enviar Consulta
+                                class="w-full py-4 bg-gradient-cyan-violet text-black rounded-xl font-bold btn-laser shadow-glow-cyan hover:shadow-lg transition-all transform hover:scale-105">
+                            ENVIAR CONSULTA
                         </button>
                     </form>
                 </div>
 
                 <!-- Información de Contacto -->
-                <div class="space-y-8">
-                    <div class="bg-gradient-to-br from-violet-neon/5 to-transparent border border-violet-neon/30 rounded-2xl p-6">
-                        <h4 class="text-xl font-bold mb-4 flex items-center gap-3">
-                            <span class="text-2xl">💬</span>
+                <div class="space-y-6">
+                    <!-- WhatsApp -->
+                    <div class="glass rounded-2xl p-8 border border-green-500/30 shadow-glow-cyan group hover:shadow-lg transition-all">
+                        <h4 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                            <span class="text-4xl">💬</span>
                             WhatsApp Directo
                         </h4>
-                        <p class="text-gray-400 mb-4">
-                            Canal de contacto más rápido. Respuesta en horas.
+                        <p class="text-gray-400 mb-6">
+                            Canal más rápido. Respuesta en horas, incluso en fines de semana.
                         </p>
                         <a href="https://wa.me/549XXXXXXXXXX" target="_blank"
-                           class="inline-block px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold transition-all">
+                           class="inline-block px-8 py-3 bg-green-500 hover:bg-green-600 text-white rounded-xl font-bold btn-laser shadow-glow-cyan hover:shadow-lg transition-all">
                             +54 9 XXXXXXXXXX
                         </a>
                     </div>
 
-                    <div class="bg-gradient-to-br from-lime-neon/5 to-transparent border border-lime-neon/30 rounded-2xl p-6">
-                        <h4 class="text-xl font-bold mb-4 flex items-center gap-3">
-                            <span class="text-2xl">🕐</span>
+                    <!-- Horarios -->
+                    <div class="glass rounded-2xl p-8 border border-violet-neon/30 shadow-glow-violet group hover:shadow-lg transition-all">
+                        <h4 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                            <span class="text-4xl">🕐</span>
                             Horarios de Atención
                         </h4>
-                        <div class="space-y-2 text-sm text-gray-400">
-                            <p><span class="text-lime-neon font-semibold">Lunes a Viernes:</span> 09:00 - 18:00</p>
-                            <p><span class="text-lime-neon font-semibold">Sábados:</span> 10:00 - 14:00</p>
-                            <p><span class="text-lime-neon font-semibold">Domingos:</span> Cerrado</p>
+                        <div class="space-y-3 text-sm">
+                            <p>
+                                <span class="text-violet-neon font-bold">Lunes a Viernes:</span>
+                                <span class="text-gray-400">09:00 - 18:00</span>
+                            </p>
+                            <p>
+                                <span class="text-violet-neon font-bold">Sábados:</span>
+                                <span class="text-gray-400">10:00 - 14:00</span>
+                            </p>
+                            <p>
+                                <span class="text-violet-neon font-bold">Domingos:</span>
+                                <span class="text-gray-400">Consultas por WhatsApp</span>
+                            </p>
                         </div>
                     </div>
 
-                    <div class="bg-gradient-to-br from-accent-pink/5 to-transparent border border-accent-pink/30 rounded-2xl p-6">
-                        <h4 class="text-xl font-bold mb-4 flex items-center gap-3">
-                            <span class="text-2xl">📍</span>
-                            Ubicación
+                    <!-- Ubicación -->
+                    <div class="glass rounded-2xl p-8 border border-lime-neon/30 shadow-glow-lime group hover:shadow-lg transition-all">
+                        <h4 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                            <span class="text-4xl">📍</span>
+                            Cobertura
                         </h4>
                         <p class="text-gray-400 mb-4">
-                            Zona de cobertura: Gran Buenos Aires y alrededores
+                            Gran Buenos Aires y alrededores
                         </p>
-                        <p class="text-sm text-gray-500">
-                            Retiro en local o envío a domicilio según disponibilidad
-                        </p>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li class="flex items-center gap-2">
+                                <span class="w-2 h-2 bg-lime-neon rounded-full"></span>
+                                Retiro en local
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-2 h-2 bg-lime-neon rounded-full"></span>
+                                Envío a domicilio
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-2 h-2 bg-lime-neon rounded-full"></span>
+                                Consulta disponibilidad
+                            </li>
+                        </ul>
                     </div>
 
-                    <div class="bg-gradient-to-br from-primary-blue/5 to-transparent border border-primary-blue/30 rounded-2xl p-6">
-                        <h4 class="text-xl font-bold mb-4 flex items-center gap-3">
-                            <span class="text-2xl">⭐</span>
+                    <!-- Testimonios -->
+                    <div class="glass rounded-2xl p-8 border border-primary-blue/30 shadow-glow-cyan group hover:shadow-lg transition-all">
+                        <h4 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                            <span class="text-4xl">⭐</span>
                             Testimonios
                         </h4>
-                        <p class="text-gray-400 text-sm italic">
-                            "Servicio técnico excelente, muy profesionales y rápidos. Recomendado 100%"
-                        </p>
-                        <p class="text-gray-500 text-xs mt-3">- Cliente Satisfecho</p>
+                        <blockquote class="text-gray-400 italic">
+                            "Servicio técnico excepcional. Repararon mi TV LED con maestría. Muy recomendado."
+                        </blockquote>
+                        <p class="text-gray-500 text-sm mt-4">— Cliente Premium 2025</p>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Background Elements -->
-        <div class="absolute top-20 right-10 w-72 h-72 bg-violet-neon/5 rounded-full filter blur-3xl"></div>
-        <div class="absolute bottom-20 left-10 w-72 h-72 bg-cyan-neon/5 rounded-full filter blur-3xl"></div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-tech-darker border-t border-cyan-neon/20 py-12 px-6">
+    <!-- Footer Premium -->
+    <footer class="relative border-t border-cyan-neon/10 py-16 px-6 bg-gradient-to-b from-transparent to-tech-dark/80">
         <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <!-- Sobre Tecniled -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <!-- Sobre -->
                 <div class="space-y-4">
-                    <div class="flex items-center space-x-2">
-                        <div class="w-10 h-10 bg-gradient-to-br from-cyan-neon to-violet-neon rounded-lg flex items-center justify-center">
-                            <span class="font-display text-white font-bold">⚡</span>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-gradient-cyan-violet rounded-xl flex items-center justify-center shadow-glow-cyan">
+                            <span class="font-display text-white font-bold text-xl">⚡</span>
                         </div>
-                        <h3 class="font-display text-xl font-bold">Tecniled</h3>
+                        <div>
+                            <h3 class="font-display text-2xl font-black bg-gradient-to-r from-cyan-neon to-violet-neon bg-clip-text text-transparent">TECNILED</h3>
+                            <p class="text-xs text-gray-500">Precisión Electrónica</p>
+                        </div>
                     </div>
-                    <p class="text-gray-400 text-sm">
-                        Componentes electrónicos premium y servicios técnicos especializados desde 2015.
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Componentes electrónicos premium y servicios técnicos especializados. Tu partner en tecnología desde 2015.
                     </p>
                 </div>
 
                 <!-- Productos -->
                 <div class="space-y-4">
-                    <h4 class="font-bold text-white">Productos</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm">
+                    <h4 class="font-bold text-white text-lg">Productos</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
                         <li><a href="#productos" class="hover:text-cyan-neon transition-colors">Potenciómetros</a></li>
                         <li><a href="#productos" class="hover:text-cyan-neon transition-colors">Fuentes LED</a></li>
                         <li><a href="#productos" class="hover:text-cyan-neon transition-colors">Componentes</a></li>
@@ -1085,79 +1417,76 @@
 
                 <!-- Servicios -->
                 <div class="space-y-4">
-                    <h4 class="font-bold text-white">Servicios</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li><a href="#servicios" class="hover:text-cyan-neon transition-colors">Reparación TV</a></li>
-                        <li><a href="#servicios" class="hover:text-cyan-neon transition-colors">Reparación LED</a></li>
-                        <li><a href="#servicios" class="hover:text-cyan-neon transition-colors">Consolas DJ</a></li>
-                        <li><a href="#servicios" class="hover:text-cyan-neon transition-colors">Diagnóstico</a></li>
+                    <h4 class="font-bold text-white text-lg">Servicios</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li><a href="#servicios" class="hover:text-violet-neon transition-colors">Reparación TV</a></li>
+                        <li><a href="#servicios" class="hover:text-violet-neon transition-colors">Reparación LED</a></li>
+                        <li><a href="#servicios" class="hover:text-violet-neon transition-colors">Consolas DJ</a></li>
+                        <li><a href="#servicios" class="hover:text-violet-neon transition-colors">Diagnóstico</a></li>
                     </ul>
                 </div>
 
-                <!-- Legales -->
+                <!-- Legal -->
                 <div class="space-y-4">
-                    <h4 class="font-bold text-white">Contacto</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm">
+                    <h4 class="font-bold text-white text-lg">Legal</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
                         <li><a href="https://wa.me/549XXXXXXXXXX" class="hover:text-green-400 transition-colors">WhatsApp</a></li>
-                        <li><a href="#contacto" class="hover:text-cyan-neon transition-colors">Formulario</a></li>
-                        <li><a href="#proceso" class="hover:text-cyan-neon transition-colors">Cómo Comprar</a></li>
+                        <li><a href="#contacto" class="hover:text-cyan-neon transition-colors">Contacto</a></li>
                         <li><a href="#" class="hover:text-cyan-neon transition-colors">Privacidad</a></li>
+                        <li><a href="#" class="hover:text-cyan-neon transition-colors">Términos</a></li>
                     </ul>
                 </div>
             </div>
 
             <!-- Copyright -->
             <div class="border-t border-cyan-neon/10 pt-8">
-                <div class="flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
-                    <p>© 2026 Tecniled. Todos los derechos reservados.</p>
-                    <div class="flex gap-6 mt-4 md:mt-0">
+                <div class="flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm mb-6">
+                    <p>© 2026 Tecniled. Todos los derechos reservados. | Precisión Electrónica sin límites.</p>
+                    <div class="flex gap-6 mt-4 md:mt-0 text-xs">
                         <a href="#" class="hover:text-cyan-neon transition-colors">Términos de Servicio</a>
                         <a href="#" class="hover:text-cyan-neon transition-colors">Política de Privacidad</a>
-                        <a href="#" class="hover:text-cyan-neon transition-colors">Contacto Legal</a>
                     </div>
                 </div>
-            </div>
 
-            <!-- Redes Sociales -->
-            <div class="mt-8 flex justify-center gap-6">
-                <a href="#" class="w-10 h-10 rounded-full bg-cyan-neon/10 border border-cyan-neon/30 flex items-center justify-center hover:bg-cyan-neon/20 transition-all" title="Facebook">
-                    f
-                </a>
-                <a href="#" class="w-10 h-10 rounded-full bg-cyan-neon/10 border border-cyan-neon/30 flex items-center justify-center hover:bg-cyan-neon/20 transition-all" title="Instagram">
-                    📷
-                </a>
-                <a href="#" class="w-10 h-10 rounded-full bg-cyan-neon/10 border border-cyan-neon/30 flex items-center justify-center hover:bg-cyan-neon/20 transition-all" title="LinkedIn">
-                    in
-                </a>
-                <a href="https://wa.me/549XXXXXXXXXX" target="_blank" class="w-10 h-10 rounded-full bg-green-500/10 border border-green-500/30 flex items-center justify-center hover:bg-green-500/20 transition-all" title="WhatsApp">
-                    💬
-                </a>
+                <!-- Redes Sociales -->
+                <div class="flex justify-center gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full glass border border-cyan-neon/30 shadow-glow-cyan flex items-center justify-center hover:border-cyan-neon hover:shadow-lg transition-all text-cyan-neon font-bold">
+                        f
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full glass border border-violet-neon/30 shadow-glow-violet flex items-center justify-center hover:border-violet-neon hover:shadow-lg transition-all text-violet-neon">
+                        📷
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full glass border border-lime-neon/30 shadow-glow-lime flex items-center justify-center hover:border-lime-neon hover:shadow-lg transition-all text-lime-neon font-bold">
+                        in
+                    </a>
+                    <a href="https://wa.me/549XXXXXXXXXX" target="_blank" class="w-10 h-10 rounded-full bg-green-500/20 border border-green-500/50 shadow-glow-cyan flex items-center justify-center hover:bg-green-500/30 hover:shadow-lg transition-all text-green-400">
+                        💬
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
 
     <!-- Scroll to Top Button -->
     <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
-            class="fixed bottom-24 right-6 bg-gradient-to-r from-cyan-neon to-primary-blue text-black p-3 rounded-full shadow-lg glow-cyan z-40 opacity-0 hover:shadow-2xl transition-all duration-300 flex items-center justify-center"
+            class="fixed bottom-24 right-8 bg-gradient-cyan-violet text-white p-4 rounded-full shadow-glow-cyan hover:shadow-lg z-40 opacity-0 hover:scale-110 transition-all duration-300 flex items-center justify-center"
             id="scrollToTop"
             title="Ir al inicio">
         ↑
     </button>
 
     <script>
-        // Mostrar/ocultar botón scroll to top
+        // Scroll to top visibility
         window.addEventListener('scroll', function() {
             const scrollBtn = document.getElementById('scrollToTop');
             if (window.pageYOffset > 300) {
                 scrollBtn.classList.remove('opacity-0');
-                scrollBtn.classList.add('opacity-100');
             } else {
                 scrollBtn.classList.add('opacity-0');
-                scrollBtn.classList.remove('opacity-100');
             }
         });
 
-        // Smooth scroll para links internos
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1168,10 +1497,10 @@
             });
         });
 
-        // Animación de entrada para elementos
+        // Intersection Observer para animaciones
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver(function(entries) {
@@ -1183,23 +1512,39 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.card-hover').forEach(el => {
+        document.querySelectorAll('.card-3d').forEach(el => {
             el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)';
             observer.observe(el);
         });
 
-        // Efecto parallax sutil
+        // Efecto parallax sutil en hero
+        let ticking = false;
         window.addEventListener('mousemove', function(e) {
-            const elements = document.querySelectorAll('[class*="circuit"]');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            
-            elements.forEach(el => {
-                const speed = 10;
-                el.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
-            });
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const x = e.clientX / window.innerWidth;
+                    const y = e.clientY / window.innerHeight;
+                    
+                    document.querySelectorAll('.circuit-line').forEach((el, index) => {
+                        if (el.offsetParent !== null) {
+                            const speed = 5 + (index * 2);
+                            el.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+                        }
+                    });
+                    
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Form submission
+        document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Gracias por tu consulta. Nos comunicaremos en breve.');
+            this.reset();
         });
     </script>
 
