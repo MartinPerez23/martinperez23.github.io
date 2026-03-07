@@ -1,10 +1,55 @@
-﻿<!-- Vista de listado de productos -->
-<div class="container">
-    <section class="section">
-        <h2>Catalogo de productos</h2>
-        <p>Listado dinamico cargado desde <code>/data/productos.json</code>.</p>
+﻿<div class="bg-tech-darker text-gray-100 relative z-10">
+  <div
+    class="floating-particle"
+    style="top: 10%; left: 10%; animation-delay: 0s"
+  ></div>
+  <div
+    class="floating-particle"
+    style="top: 20%; right: 15%; animation-delay: 1s"
+  ></div>
+  <div
+    class="floating-particle"
+    style="top: 40%; left: 5%; animation-delay: 2s"
+  ></div>
+  <div
+    class="floating-particle"
+    style="top: 60%; right: 10%; animation-delay: 3s"
+  ></div>
+  <div
+    class="floating-particle"
+    style="top: 80%; left: 20%; animation-delay: 4s"
+  ></div>
+  <section class="py-32 px-6 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto relative z-10">
+      <!-- Header -->
+      <div class="mb-16 text-center">
+        <h2
+          class="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-500 text-transparent bg-clip-text"
+        >
+          Catálogo de productos
+        </h2>
 
-        <!-- Contenedor donde productos.js renderiza el grid -->
-        <div id="productos-grid" class="productos-grid"></div>
-    </section>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          Explorá nuestro catálogo de productos
+        </p>
+      </div>
+
+      <!-- GRID -->
+      <div
+        id="productos-grid"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
+      >
+        <!--
+        productos.js renderiza aquí tarjetas de producto.
+        Cada card debería seguir esta estructura:
+
+        <div class="producto-card">
+          <img src="..." />
+          <h3>Nombre</h3>
+          <p>Descripción</p>
+          <button onclick="loadProducto('id')">Ver producto</button>
+        </div>
+      --></div>
+    </div>
+  </section>
 </div>

@@ -1,13 +1,64 @@
-﻿<!-- Vista de producto individual -->
-<div class="container">
-    <section class="section">
-        <h2>Detalle del producto</h2>
+﻿<div class="bg-tech-darker text-gray-100 relative z-10">
+  <div
+    class="floating-particle"
+    style="top: 10%; left: 10%; animation-delay: 0s"
+  ></div>
+  <div
+    class="floating-particle"
+    style="top: 20%; right: 15%; animation-delay: 1s"
+  ></div>
+  <div
+    class="floating-particle"
+    style="top: 40%; left: 5%; animation-delay: 2s"
+  ></div>
+  <div
+    class="floating-particle"
+    style="top: 60%; right: 10%; animation-delay: 3s"
+  ></div>
+  <div
+    class="floating-particle"
+    style="top: 80%; left: 20%; animation-delay: 4s"
+  ></div>
 
-        <!-- Contenedor donde productos.js renderiza el detalle del item -->
-        <div id="producto-detalle" class="producto-detalle"></div>
+  <section class="py-32 px-6 relative overflow-hidden">
+    <div class="max-w-6xl mx-auto relative z-10">
+      <div class="mb-12 text-center">
+        <h2
+          class="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-500 text-transparent bg-clip-text"
+        >
+          Detalle del producto
+        </h2>
+      </div>
 
-        <div style="margin-top: 1rem;">
-            <button class="btn btn-secondary" onclick="loadPage('productos')">Volver a productos</button>
+      <!-- DETALLE DEL PRODUCTO -->
+      <div
+        id="producto-detalle"
+        class="grid md:grid-cols-2 gap-12 items-center"
+      >
+        <!--
+        productos.js renderiza aquí algo como:
+
+        <div class="producto-imagen">
+          <img src="..." />
         </div>
-    </section>
+
+        <div class="producto-info">
+          <h3>Nombre</h3>
+          <p>Descripción larga</p>
+          <span>Categoria</span>
+          <button>Consultar</button>
+        </div>
+      --></div>
+
+      <!-- BOTON VOLVER -->
+      <div class="mt-16 text-center">
+        <button
+          class="px-6 py-3 rounded-xl border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black transition"
+          onclick="loadPage('productos')"
+        >
+          Volver al catálogo
+        </button>
+      </div>
+    </div>
+  </section>
 </div>
