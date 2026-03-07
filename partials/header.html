@@ -1,11 +1,75 @@
-﻿<!-- Header principal con links SPA que llaman al router sin recargar -->
-<header>
-    <div class="container topbar" id="spa-header">
-        <div class="brand">TECNILED</div>
-        <nav>
-            <a href="#principal" data-route="principal" onclick="loadPage('principal'); return false;">Inicio</a>
-            <a href="#productos" data-route="productos" onclick="loadPage('productos'); return false;">Productos</a>
-            <a href="#contacto" onclick="loadPage('principal', { section: 'contacto' }); return false;">Contacto</a>
-        </nav>
+﻿<!-- Header/Navbar Premium -->
+<header class="fixed top-0 w-full z-40 navbar-blur">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+    <div class="flex items-center space-x-3 group">
+      <div
+        class="relative w-12 h-12 bg-gradient-cyan-violet rounded-xl flex items-center justify-center shadow-glow-cyan group-hover:shadow-lg transition-all"
+      >
+        <span class="font-display text-white font-bold text-xl">⚡</span>
+        <div
+          class="absolute inset-0 rounded-xl bg-gradient-to-br from-cyan-neon/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+        ></div>
+      </div>
+      <div>
+        <a
+          href="#principal"
+          data-route="principal"
+          onclick="
+            loadPage('principal');
+            return false;
+          "
+        >
+          <h1
+            class="font-display text-2xl font-black bg-gradient-to-r from-cyan-neon via-primary-blue to-violet-neon bg-clip-text text-transparent neon-glow"
+          >
+            TECNILED
+          </h1>
+          <p class="text-xs text-gray-400 font-semibold">
+            Precisión Electrónica
+          </p>
+        </a>
+      </div>
     </div>
+
+    <nav class="hidden lg:flex space-x-10">
+      <a
+        href="#productos"
+        class="text-gray-400 hover:text-cyan-neon font-medium transition-all"
+        data-route="productos"
+        onclick="
+          loadPage('productos');
+          return false;
+        "
+        >Productos</a
+      >
+
+      <a
+        href="#servicios"
+        class="text-gray-400 hover:text-violet-neon font-medium transition-all"
+        onclick="
+          loadPage('principal', { section: 'servicios' });
+          return false;
+        "
+        >Servicios</a
+      >
+      <a
+        href="#proceso"
+        class="text-gray-400 hover:text-lime-neon font-medium transition-all"
+        onclick="
+          loadPage('principal', { section: 'proceso' });
+          return false;
+        "
+        >Cómo Comprar</a
+      >
+      <a
+        href="#contacto"
+        class="text-gray-400 hover:text-cyan-neon font-medium transition-all"
+        onclick="
+          loadPage('principal', { section: 'contacto' });
+          return false;
+        "
+        >Contacto</a
+      >
+    </nav>
+  </div>
 </header>

@@ -1,12 +1,23 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tecniled">
-    <title>Tecniled</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Tecniled - Componentes electrónicos premium y servicios técnicos especializados. Reparación profesional de TV, LED, consolas DJ y diagnóstico electrónico avanzado."
+    />
+    <meta
+      name="keywords"
+      content="componentes electrónicos, LED, potenciómetros, consolas DJ, reparación técnica, diagnóstico electrónico"
+    />
+
+    <title>
+      Tecniled - Precisión Electrónica | Componentes Premium y Reparaciones
+      Técnicas
+    </title>
+  </head>
+  <body>
     <!-- partials/header.html -->
     <div id="header-container"></div>
 
@@ -19,61 +30,61 @@
     <!-- partials/js.html se carga por JS durante el bootstrap -->
 
     <script>
-        // Carga texto desde ruta absoluta o relativa para GitHub Pages de usuario/proyecto.
-        // Se intentan varias variantes para que funcione tanto en HTTP como en file:// y
-        // tomando en cuenta posibles prefijos de repositorio en GitHub Pages.
-        async function fetchWithFallback(path) {
-            const paths = [
-                path,
-                path.replace(/^\//, "./") // relativo desde la página actual
-            ];
+      // Carga texto desde ruta absoluta o relativa para GitHub Pages de usuario/proyecto.
+      // Se intentan varias variantes para que funcione tanto en HTTP como en file:// y
+      // tomando en cuenta posibles prefijos de repositorio en GitHub Pages.
+      async function fetchWithFallback(path) {
+        const paths = [
+          path,
+          path.replace(/^\//, "./"), // relativo desde la página actual
+        ];
 
-            // si la aplicación está servida desde un subdirectorio, incluir ruta base
-            const base = location.pathname.replace(/\/[^\/]*$/, "");
-            if (base && base !== "/") {
-                const trimmed = path.replace(/^\//, "");
-                paths.push(base + "/" + trimmed);
-                paths.push(base + "/" + trimmed.replace(/^\//, ""));
-            }
-
-            for (const currentPath of paths) {
-                try {
-                    const response = await fetch(currentPath);
-                    if (response.ok) {
-                        return await response.text();
-                    }
-                } catch (error) {
-                    // No hacemos nada, probamos otra ruta.
-                }
-            }
-
-            console.warn("No se pudo cargar: " + path);
-            // Devolvemos cadena vacía para que quien llame no detenga la ejecución.
-            return "";
+        // si la aplicación está servida desde un subdirectorio, incluir ruta base
+        const base = location.pathname.replace(/\/[^\/]*$/, "");
+        if (base && base !== "/") {
+          const trimmed = path.replace(/^\//, "");
+          paths.push(base + "/" + trimmed);
+          paths.push(base + "/" + trimmed.replace(/^\//, ""));
         }
 
-        // Carga el partial de estilos dentro del <head>.
-        async function loadCssPartial() {
-            const cssHtml = await fetchWithFallback("/partials/css.html");
-            if (cssHtml) {
-                document.head.insertAdjacentHTML("beforeend", cssHtml);
-            } else {
-                console.warn("Estilos no cargados, usando valores por defecto.");
+        for (const currentPath of paths) {
+          try {
+            const response = await fetch(currentPath);
+            if (response.ok) {
+              return await response.text();
             }
+          } catch (error) {
+            // No hacemos nada, probamos otra ruta.
+          }
         }
 
-        // Carga un partial HTML dentro de un contenedor.
-        async function loadHtmlPartial(path, containerId) {
-            const html = await fetchWithFallback(path);
-            const container = document.getElementById(containerId);
-            if (container) {
-                if (html) {
-                    container.innerHTML = html;
-                } else {
-                    // Si no pudimos cargar el partial, insertamos un fallback simple. Para
-                    // el header usamos una versión estática mínima que permite navegar.
-                    if (containerId === "header-container") {
-                        container.innerHTML = `
+        console.warn("No se pudo cargar: " + path);
+        // Devolvemos cadena vacía para que quien llame no detenga la ejecución.
+        return "";
+      }
+
+      // Carga el partial de estilos dentro del <head>.
+      async function loadCssPartial() {
+        const cssHtml = await fetchWithFallback("/partials/css.html");
+        if (cssHtml) {
+          document.head.insertAdjacentHTML("beforeend", cssHtml);
+        } else {
+          console.warn("Estilos no cargados, usando valores por defecto.");
+        }
+      }
+
+      // Carga un partial HTML dentro de un contenedor.
+      async function loadHtmlPartial(path, containerId) {
+        const html = await fetchWithFallback(path);
+        const container = document.getElementById(containerId);
+        if (container) {
+          if (html) {
+            container.innerHTML = html;
+          } else {
+            // Si no pudimos cargar el partial, insertamos un fallback simple. Para
+            // el header usamos una versión estática mínima que permite navegar.
+            if (containerId === "header-container") {
+              container.innerHTML = `
 <header>
     <div class="container topbar" id="spa-header">
         <div class="brand">TECNILED</div>
@@ -84,61 +95,60 @@
         </nav>
     </div>
 </header>`;
-                    } else {
-                        container.innerHTML = `<div class='container'><p>No se pudo cargar <code>${path}</code></p></div>`;
-                    }
-                }
+            } else {
+              container.innerHTML = `<div class='container'><p>No se pudo cargar <code>${path}</code></p></div>`;
             }
+          }
+        }
+      }
+
+      // Carga y ejecuta scripts definidos en partials/js.html.
+      async function loadJsPartial() {
+        const scriptsHtml = await fetchWithFallback("/partials/js.html");
+        const temp = document.createElement("div");
+        temp.innerHTML = scriptsHtml;
+
+        temp.querySelectorAll("script").forEach((sourceScript) => {
+          const newScript = document.createElement("script");
+
+          if (sourceScript.src) {
+            newScript.src = sourceScript.src;
+          } else {
+            newScript.textContent = sourceScript.textContent;
+          }
+
+          document.body.appendChild(newScript);
+        });
+      }
+
+      // Inicializa layout + JS SPA; cada paso se maneja por separado para no interrumpir
+      // la ejecución si una de las cargas falla (por ejemplo al abrir el archivo desde
+      // file:// en lugar de un servidor HTTP).
+      (async function bootstrap() {
+        try {
+          await loadCssPartial();
+        } catch (e) {
+          console.error("Error cargando estilos:", e);
         }
 
-        // Carga y ejecuta scripts definidos en partials/js.html.
-        async function loadJsPartial() {
-            const scriptsHtml = await fetchWithFallback("/partials/js.html");
-            const temp = document.createElement("div");
-            temp.innerHTML = scriptsHtml;
-
-            temp.querySelectorAll("script").forEach((sourceScript) => {
-                const newScript = document.createElement("script");
-
-                if (sourceScript.src) {
-                    newScript.src = sourceScript.src;
-                } else {
-                    newScript.textContent = sourceScript.textContent;
-                }
-
-                document.body.appendChild(newScript);
-            });
+        try {
+          await loadHtmlPartial("/partials/header.html", "header-container");
+        } catch (e) {
+          console.error("Error cargando header:", e);
         }
 
-        // Inicializa layout + JS SPA; cada paso se maneja por separado para no interrumpir
-        // la ejecución si una de las cargas falla (por ejemplo al abrir el archivo desde
-        // file:// en lugar de un servidor HTTP).
-        (async function bootstrap() {
-            try {
-                await loadCssPartial();
-            } catch (e) {
-                console.error("Error cargando estilos:", e);
-            }
+        try {
+          await loadHtmlPartial("/partials/footer.html", "footer-container");
+        } catch (e) {
+          console.error("Error cargando footer:", e);
+        }
 
-            try {
-                await loadHtmlPartial("/partials/header.html", "header-container");
-            } catch (e) {
-                console.error("Error cargando header:", e);
-            }
-
-            try {
-                await loadHtmlPartial("/partials/footer.html", "footer-container");
-            } catch (e) {
-                console.error("Error cargando footer:", e);
-            }
-
-            try {
-                await loadJsPartial();
-            } catch (e) {
-                console.error("Error cargando scripts de la SPA:", e);
-            }
-        })();
+        try {
+          await loadJsPartial();
+        } catch (e) {
+          console.error("Error cargando scripts de la SPA:", e);
+        }
+      })();
     </script>
-</body>
+  </body>
 </html>
-
