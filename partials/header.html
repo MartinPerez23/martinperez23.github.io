@@ -1,0 +1,11 @@
+﻿<!-- Header principal con links SPA que llaman al router sin recargar -->
+<header>
+    <div class="container topbar" id="spa-header">
+        <div class="brand">TECNILED</div>
+        <nav>
+            <a href="#principal" data-route="principal" onclick="loadPage('principal'); return false;">Inicio</a>
+            <a href="#productos" data-route="productos" onclick="loadPage('productos'); return false;">Productos</a>
+            <a href="#contacto" onclick="loadPage('principal', { section: 'contacto' }); return false;">Contacto</a>
+        </nav>
+    </div>
+</header>

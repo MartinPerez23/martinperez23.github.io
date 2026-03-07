@@ -1,0 +1,26 @@
+﻿[
+  {
+    "id": "potenciometro-b10k",
+    "nombre": "Potenciometro B10K",
+    "descripcion": "Potenciometro lineal para audio",
+    "descripcion_larga": "Potenciometro de alta precision utilizado en equipos de audio y consolas DJ.",
+    "imagen": "/images/productos/potenciometro.jpg",
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "fader-45mm",
+    "nombre": "Fader 45mm",
+    "descripcion": "Fader de reemplazo para mixers DJ",
+    "descripcion_larga": "Fader de 45mm con recorrido suave y alta durabilidad para consolas DJ y controladoras.",
+    "imagen": "/images/productos/fader.jpg",
+    "categoria": "repuestos-dj"
+  },
+  {
+    "id": "fuente-led-12v",
+    "nombre": "Fuente LED 12V",
+    "descripcion": "Fuente con proteccion para tiras LED",
+    "descripcion_larga": "Fuente switching 12V estabilizada con proteccion contra sobrecarga y cortocircuito.",
+    "imagen": "/images/productos/fuente.jpg",
+    "categoria": "fuentes"
+  }
+]
