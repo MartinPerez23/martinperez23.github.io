@@ -17,11 +17,11 @@
       Técnicas
     </title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/custom.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
       rel="stylesheet"
     />
-
     <script>
       tailwind.config = {
         darkMode: "class",
@@ -157,16 +157,6 @@
         return "";
       }
 
-      // Carga el partial de estilos dentro del <head>.
-      async function loadCssPartial() {
-        const cssHtml = await fetchWithFallback("/partials/css.html");
-        if (cssHtml) {
-          document.head.insertAdjacentHTML("beforeend", cssHtml);
-        } else {
-          console.warn("Estilos no cargados, usando valores por defecto.");
-        }
-      }
-
       // Carga un partial HTML dentro de un contenedor.
       async function loadHtmlPartial(path, containerId) {
         const html = await fetchWithFallback(path);
@@ -180,35 +170,10 @@
         }
       }
 
-      // Carga y ejecuta scripts definidos en partials/js.html.
-      async function loadJsPartial() {
-        const scriptsHtml = await fetchWithFallback("/partials/js.html");
-        const temp = document.createElement("div");
-        temp.innerHTML = scriptsHtml;
-
-        temp.querySelectorAll("script").forEach((sourceScript) => {
-          const newScript = document.createElement("script");
-
-          if (sourceScript.src) {
-            newScript.src = sourceScript.src;
-          } else {
-            newScript.textContent = sourceScript.textContent;
-          }
-
-          document.body.appendChild(newScript);
-        });
-      }
-
       // Inicializa layout + JS SPA; cada paso se maneja por separado para no interrumpir
       // la ejecución si una de las cargas falla (por ejemplo al abrir el archivo desde
       // file:// en lugar de un servidor HTTP).
       (async function bootstrap() {
-        try {
-          await loadCssPartial();
-        } catch (e) {
-          console.error("Error cargando estilos:", e);
-        }
-
         try {
           await loadHtmlPartial("/partials/header.html", "header-container");
         } catch (e) {
@@ -220,13 +185,10 @@
         } catch (e) {
           console.error("Error cargando footer:", e);
         }
-
-        try {
-          await loadJsPartial();
-        } catch (e) {
-          console.error("Error cargando scripts de la SPA:", e);
-        }
       })();
     </script>
+    <script src="./js/productos.js"></script>
+    <script src="./js/router.js"></script>
+    <script src="./js/page.js"></script>
   </body>
 </html>

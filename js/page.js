@@ -1,3 +1,14 @@
+const CONFIG = {
+  WHATSAPP_NUMBER: "5491123456789",
+};
+
+// Función para abrir WhatsApp con un mensaje predefinido
+function abrirWhatsapp(mensaje) {
+  const url = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
+
+  window.open(url, "_blank");
+}
+
 // Scroll to top visibility
 window.addEventListener("scroll", function () {
   const scrollBtn = document.getElementById("scrollToTop");

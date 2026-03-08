@@ -120,7 +120,7 @@
 
                 <div>
                     <a
-                        href="https://wa.me/549XXXXXXXXXX?text=Hola,%20consulto%20por%20${encodeURIComponent(producto.nombre)}"
+                        href="https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=Hola,%20consulto%20por%20${encodeURIComponent(producto.nombre)}"
                         target="_blank"
                         class="px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl text-black font-semibold inline-block"
                     >
