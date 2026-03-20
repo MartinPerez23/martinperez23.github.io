@@ -1,5 +1,5 @@
 const CONFIG = {
-  WHATSAPP_NUMBER: "5491123456789",
+  WHATSAPP_NUMBER: "5491124735109",
 };
 
 // Función para abrir WhatsApp con un mensaje predefinido
