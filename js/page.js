@@ -1,8 +1,75 @@
-const CONFIG = {
+﻿const CONFIG = {
   WHATSAPP_NUMBER: "5491124735109",
 };
 
-// Función para abrir WhatsApp con un mensaje predefinido
+function setupHeaderMenu() {
+  const header = document.getElementById("spa-header");
+  const toggleButton = document.getElementById("mobile-menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (!header || !toggleButton || !mobileMenu || header.dataset.menuReady === "true") {
+    return;
+  }
+
+  const setMenuState = (isOpen) => {
+    mobileMenu.classList.toggle("is-open", isOpen);
+    toggleButton.setAttribute("aria-expanded", String(isOpen));
+  };
+
+  const closeMenu = () => {
+    setMenuState(false);
+  };
+
+  toggleButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const isOpen = toggleButton.getAttribute("aria-expanded") === "true";
+    setMenuState(!isOpen);
+  });
+
+  header.addEventListener("click", (event) => {
+    if (event.target.closest("a")) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!header.contains(event.target)) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1023) {
+      closeMenu();
+    }
+  });
+
+  header.dataset.menuReady = "true";
+}
+
+window.setupHeaderMenu = setupHeaderMenu;
+setupHeaderMenu();
+
+const headerContainer = document.getElementById("header-container");
+if (headerContainer) {
+  const headerObserver = new MutationObserver(() => {
+    setupHeaderMenu();
+    const currentHeader = document.getElementById("spa-header");
+    if (currentHeader && currentHeader.dataset.menuReady === "true") {
+      headerObserver.disconnect();
+    }
+  });
+
+  headerObserver.observe(headerContainer, { childList: true, subtree: true });
+}
+
+// Funcion para abrir WhatsApp con un mensaje predefinido
 function abrirWhatsapp(mensaje) {
   const url = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
 
@@ -12,6 +79,10 @@ function abrirWhatsapp(mensaje) {
 // Scroll to top visibility
 window.addEventListener("scroll", function () {
   const scrollBtn = document.getElementById("scrollToTop");
+  if (!scrollBtn) {
+    return;
+  }
+
   if (window.pageYOffset > 300) {
     scrollBtn.classList.remove("opacity-0");
   } else {

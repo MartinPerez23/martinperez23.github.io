@@ -1,5 +1,5 @@
 <!-- Header/Navbar Premium -->
-<header class="fixed top-0 w-full z-40 navbar-blur">
+<header id="spa-header" class="fixed top-0 w-full z-40 navbar-blur">
   <div class="header-inner max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
     <div class="flex items-center space-x-3 group">
       <div
@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <nav class="header-nav hidden lg:flex space-x-10">
+    <nav class="header-nav space-x-10">
       <a
         class="text-gray-400 hover:text-cyan-neon font-medium transition-all"
         data-route="productos"
@@ -71,6 +71,65 @@
         >Contacto</a
       >
     </nav>
-  </div>
-</header>
 
+    <button
+      id="mobile-menu-toggle"
+      type="button"
+      class="header-menu-toggle"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Abrir menu de navegacion"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.8"
+        stroke="currentColor"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+    </button>
+  </div>
+
+  <nav id="mobile-menu" class="mobile-menu" aria-label="Navegacion movil">
+    <a
+      class="mobile-menu-link text-gray-300 hover:text-cyan-neon"
+      data-route="productos"
+      onclick="
+        loadPage('productos');
+        return false;
+      "
+      >Productos</a
+    >
+
+    <a
+      href="#servicios"
+      class="mobile-menu-link text-gray-300 hover:text-violet-neon"
+      onclick="
+        loadPage('principal', { section: 'servicios' });
+        return false;
+      "
+      >Servicios</a
+    >
+    <a
+      href="#proceso"
+      class="mobile-menu-link text-gray-300 hover:text-lime-neon"
+      onclick="
+        loadPage('principal', { section: 'proceso' });
+        return false;
+      "
+      >Como Comprar</a
+    >
+    <a
+      href="#contacto"
+      class="mobile-menu-link text-gray-300 hover:text-cyan-neon"
+      onclick="
+        loadPage('principal', { section: 'contacto' });
+        return false;
+      "
+      >Contacto</a
+    >
+  </nav>
+</header>
