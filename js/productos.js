@@ -1,5 +1,26 @@
-﻿(function () {
+(function () {
   let productosCache = null;
+  let carruselProducto = {
+    imagenes: [],
+    indice: 0,
+  };
+
+  function getImagenes(producto) {
+    if (Array.isArray(producto.imagenes) && producto.imagenes.length > 0) {
+      return producto.imagenes;
+    }
+
+    if (producto.imagen) {
+      return [producto.imagen];
+    }
+
+    return [];
+  }
+
+  function getImagenPrincipal(producto) {
+    const imagenes = getImagenes(producto);
+    return imagenes[0] || "";
+  }
 
   // Obtiene y cachea el JSON de productos para evitar fetch repetidos.
   async function getProductos() {
@@ -40,12 +61,14 @@
 
     grid.innerHTML = productos
       .map((producto) => {
+        const imagenPrincipal = getImagenPrincipal(producto);
+
         return `
                 <article class="bg-[#0f172a] border border-cyan-500/20 rounded-2xl p-6 
                 shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-2 transition duration-300 flex flex-col">
 
                     <img 
-                        src="${producto.imagen}" 
+                        src="${imagenPrincipal}" 
                         alt="${producto.nombre}" 
                         loading="lazy"
                         class="w-full h-48 object-contain mb-6"
@@ -95,13 +118,24 @@
       return;
     }
 
+    const imagenes = getImagenes(producto);
+    const tieneVariasImagenes = imagenes.length > 1;
+
+    carruselProducto = {
+      imagenes: imagenes,
+      indice: 0,
+    };
+
     detail.innerHTML = `
-            <div>
+            <div class="producto-carrusel">
                 <img 
-                    src="${producto.imagen}" 
+                    id="producto-imagen-principal"
+                    src="${imagenes[0] || ""}" 
                     alt="${producto.nombre}"
-                    class="w-full rounded-2xl border border-cyan-500/20"
+                    class="w-full h-80 object-contain rounded-2xl border border-cyan-500/20 bg-[#0f172a]"
                 >
+
+                ${tieneVariasImagenes ? renderControlesCarrusel(producto, imagenes) : ""}
             </div>
 
             <div>
@@ -132,6 +166,116 @@
         `;
   }
 
+  function renderControlesCarrusel(producto, imagenes) {
+    return `
+        <div class="flex items-center justify-center gap-4 mt-4">
+            <button
+                type="button"
+                aria-label="Imagen anterior"
+                class="w-10 h-10 rounded-full border border-cyan-400 text-cyan-300 hover:bg-cyan-400 hover:text-black transition"
+                onclick="cambiarImagenProducto(-1)"
+            >
+                &lsaquo;
+            </button>
+
+            <div id="producto-indicadores" class="flex items-center gap-2">
+                ${imagenes
+                  .map(
+                    (_, index) => `
+                        <button
+                            type="button"
+                            aria-label="Ver imagen ${index + 1}"
+                            class="w-2 h-2 rounded-full transition ${
+                              index === 0 ? "bg-cyan-neon" : "bg-cyan-500/20"
+                            }"
+                            onclick="seleccionarImagenProducto(${index})"
+                        ></button>
+                    `
+                  )
+                  .join("")}
+            </div>
+
+            <button
+                type="button"
+                aria-label="Imagen siguiente"
+                class="w-10 h-10 rounded-full border border-cyan-400 text-cyan-300 hover:bg-cyan-400 hover:text-black transition"
+                onclick="cambiarImagenProducto(1)"
+            >
+                &rsaquo;
+            </button>
+        </div>
+
+        <div id="producto-miniaturas" class="grid grid-cols-1 md:grid-cols-4 gap-3 mt-4">
+            ${imagenes
+              .map(
+                (imagen, index) => `
+                    <button
+                        type="button"
+                        class="h-20 rounded-xl border ${
+                          index === 0 ? "border-cyan-400" : "border-cyan-500/20"
+                        } bg-[#0f172a] p-2 transition hover:border-cyan-neon/60"
+                        onclick="seleccionarImagenProducto(${index})"
+                    >
+                        <img
+                            src="${imagen}"
+                            alt="${producto.nombre} ${index + 1}"
+                            class="w-full h-full object-contain"
+                            loading="lazy"
+                        >
+                    </button>
+                `
+              )
+              .join("")}
+        </div>
+    `;
+  }
+
+  function actualizarCarruselProducto() {
+    const imagen = document.getElementById("producto-imagen-principal");
+    if (!imagen || carruselProducto.imagenes.length === 0) {
+      return;
+    }
+
+    imagen.src = carruselProducto.imagenes[carruselProducto.indice];
+
+    document
+      .querySelectorAll("#producto-indicadores button")
+      .forEach((button, index) => {
+        button.classList.toggle("bg-cyan-neon", index === carruselProducto.indice);
+        button.classList.toggle("bg-cyan-500/20", index !== carruselProducto.indice);
+      });
+
+    document
+      .querySelectorAll("#producto-miniaturas button")
+      .forEach((button, index) => {
+        button.classList.toggle("border-cyan-400", index === carruselProducto.indice);
+        button.classList.toggle(
+          "border-cyan-500/20",
+          index !== carruselProducto.indice
+        );
+      });
+  }
+
+  function cambiarImagenProducto(direccion) {
+    const total = carruselProducto.imagenes.length;
+    if (total < 2) {
+      return;
+    }
+
+    carruselProducto.indice =
+      (carruselProducto.indice + direccion + total) % total;
+    actualizarCarruselProducto();
+  }
+
+  function seleccionarImagenProducto(indice) {
+    if (indice < 0 || indice >= carruselProducto.imagenes.length) {
+      return;
+    }
+
+    carruselProducto.indice = indice;
+    actualizarCarruselProducto();
+  }
+
   // Navega al detalle usando el router global.
   function loadProducto(idProducto) {
     if (typeof window.loadPage === "function") {
@@ -143,4 +287,6 @@
   window.renderProductos = renderProductos;
   window.renderProducto = renderProducto;
   window.loadProducto = loadProducto;
+  window.cambiarImagenProducto = cambiarImagenProducto;
+  window.seleccionarImagenProducto = seleccionarImagenProducto;
 })();

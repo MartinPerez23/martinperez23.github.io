@@ -1,26 +1,260 @@
-﻿[
+[
   {
-    "id": "potenciometro-b10k",
-    "nombre": "Potenciometro B10K",
-    "descripcion": "Potenciometro lineal para audio",
-    "descripcion_larga": "Potenciometro de alta precision utilizado en equipos de audio y consolas DJ.",
-    "imagen": "/images/productos/potenciometro.jpg",
+    "id": "potenciometro-fader-a10k-60mm",
+    "nombre": "Potenciometro fader A10k estereo",
+    "descripcion": "Potenciometro fader deslizable para consolas soundcraft estereo",
+    "descripcion_larga": "Potenciometro fader deslizable \"A10k\" 60mm de carrera y 75mm total",
+    "imagenes": [
+      "/images/productos/potenciometro-fader-soundcraft-a10k-60mm/imagen-1.jpg"
+    ],
     "categoria": "potenciometros"
   },
   {
-    "id": "fader-45mm",
-    "nombre": "Fader 45mm",
-    "descripcion": "Fader de reemplazo para mixers DJ",
-    "descripcion_larga": "Fader de 45mm con recorrido suave y alta durabilidad para consolas DJ y controladoras.",
-    "imagen": "/images/productos/fader.jpg",
-    "categoria": "repuestos-dj"
+    "id": "potenciometro-fader-mono-estereo-b10k-88mm",
+    "nombre": "Potenciometro fader B10K mono/estereo 88mm",
+    "descripcion": "Potenciometro fader deslizable B10K",
+    "descripcion_larga": "Potenciometro fader deslizable \"B10k\" 88mm total",
+    "imagenes": [
+      "/images/productos/potenciometro-fader-mono-estereo-b10k-88mm/imagen-1.jpg"
+    ],
+    "categoria": "potenciometros"
   },
   {
-    "id": "fuente-led-12v",
-    "nombre": "Fuente LED 12V",
-    "descripcion": "Fuente con proteccion para tiras LED",
-    "descripcion_larga": "Fuente switching 12V estabilizada con proteccion contra sobrecarga y cortocircuito.",
-    "imagen": "/images/productos/fuente.jpg",
-    "categoria": "fuentes"
+    "id": "potenciometro-fader-estereo-b10k-45mm",
+    "nombre": "Potenciometro fader B10K estereo 45mm",
+    "descripcion": "Potenciometro fader deslizable B10K estereo",
+    "descripcion_larga": "Potenciometro fader deslizable \"B10k\" 45mm de carrera y 60mm total",
+    "imagenes": [
+      "/images/productos/potenciometro-fader-estereo-b10k-45mm/imagen-1.jpg"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-fader-estereo-a10k-45mm",
+    "nombre": "Potenciometro fader A10K estereo 45mm",
+    "descripcion": "Potenciometro fader deslizable A10K estereo",
+    "descripcion_larga": "Potenciometro fader deslizable \"A10k\" 45mm de carrera y 60mm total",
+    "imagenes": [
+      "/images/productos/potenciometro-fader-estereo-a10k-45mm/imagen-1.jpg"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-fader-estereo-b20k-45mm",
+    "nombre": "Potenciometro fader deslizable estereo B20K 45mm",
+    "descripcion": "Potenciometro fader deslizable B20K estereo",
+    "descripcion_larga": "Potenciometro fader deslizable \"B20k\" 45mm de carrera y (60mm total)",
+    "imagenes": [
+      "/images/productos/potenciometro-fader-estereo-b20k-45mm/imagen-1.jpg"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-fader-estereo-a20k-60mm",
+    "nombre": "Potenciometro fader deslizable estereo A20K 60mm",
+    "descripcion": "Potenciometro fader deslizable A20K estereo",
+    "descripcion_larga": "Potenciometro fader deslizable \"A20k\" 60mm de carrera y 75mm total",
+    "imagenes": [
+      "/images/productos/potenciometro-fader-estereo-a20k-60mm/imagen-1.png"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-fader-estereo-b20k-60mm",
+    "nombre": "Potenciometro fader deslizable estereo B20K 60mm",
+    "descripcion": "Potenciometro fader deslizable B20K estereo",
+    "descripcion_larga": "Potenciometro fader deslizable \"B20K\" 60mm de carrera y 75mm total",
+    "imagenes": [
+      "/images/productos/potenciometro-fader-estereo-b20k-60mm/imagen-1.png"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-fader-estereo-a50k-60mm",
+    "nombre": "Potenciometro fader deslizable estereo A50K 60mm",
+    "descripcion": "Potenciometro fader deslizable A50K estereo",
+    "descripcion_larga": "Potenciometro deslizble fader \"A50k\" 60mm de carrera y 75mm total",
+    "imagenes": [
+      "/images/productos/potenciometro-fader-estereo-a50k-60mm/imagen-1.png"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-fader-mono-b10k-100mm",
+    "nombre": "Potenciometro fader deslizable mono B10K 100mm",
+    "descripcion": "Potenciometro deslizble mono",
+    "descripcion_larga": "Potenciometro deslizble \"B10k\" 100mm de carrera y 128mm total",
+    "imagenes": [
+      "/images/productos/potenciometro-fader-mono-b10k-100mm/imagen-1.png",
+      "/images/productos/potenciometro-fader-mono-b10k-100mm/imagen-2.png"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-crossfader-estereo-b10k-45mm",
+    "nombre": "Potenciometro crossfader deslizable estereo B10K 45mm",
+    "descripcion": "Potenciometro crossfader estereo",
+    "descripcion_larga": "Potenciometro crossfader \"B10k\" 45mm de carrera y 73mm total",
+    "imagenes": [
+      "/images/productos/potenciometro-crossfader-estereo-b10k-45mm/imagen-1.png",
+      "/images/productos/potenciometro-crossfader-estereo-b10k-45mm/imagen-2.png"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-pioneer-ddj-b20k-45mm",
+    "nombre": "Potenciometro deslizable mono b20k 45mm",
+    "descripcion": "Potenciometro deslizable mono para pioneer ddj-sr/sx/sx2",
+    "descripcion_larga": "Potenciometro deslizable mono \"B20K\" 45mm de carrera y 73mm total",
+    "imagenes": [
+      "/images/productos/potenciometro-pioneer-ddj-b20k-45mm/imagen-1.png",
+      "/images/productos/potenciometro-pioneer-ddj-b20k-45mm/imagen-2.png"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-deslizable-estereo-a10k-100mm",
+    "nombre": "Potenciometro deslizable estereo A10K 100mm",
+    "descripcion": "Potenciometro deslizable A10K estereo",
+    "descripcion_larga": "Potenciometro deslizable \"A10K\" 100mm de carrera y 128mm total",
+    "imagenes": [
+      "/images/productos/potenciometro-deslizable-estereo-a10k-100mm/imagen-1.png",
+      "/images/productos/potenciometro-deslizable-estereo-a10k-100mm/imagen-2.png",
+      "/images/productos/potenciometro-deslizable-estereo-a10k-100mm/imagen-3.png"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-fader-estereo-a10k-88mm",
+    "nombre": "Potenciometro fader deslizable estereo A10K 88mm",
+    "descripcion": "Ponteciometro fader deslizable estereo",
+    "descripcion_larga": "Ponteciometro fader deslizable \"A10K\" 88mm totales",
+    "imagenes": [
+      "/images/productos/potenciometro-fader-estereo-a10k-88mm/imagen-1.png",
+      "/images/productos/potenciometro-fader-estereo-a10k-88mm/imagen-2.png"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-pioneer-b10k-45mm",
+    "nombre": "Potenciometro deslizable estereo B10K 45mm",
+    "descripcion": "Ponteciometro deslizable estereo para controlador pioneer",
+    "descripcion_larga": "Ponteciometro deslizable \"B10K\" 45mm de carrera Y 60mm totales",
+    "imagenes": [
+      "/images/productos/potenciometro-pioneer-b10k-45mm/imagen-1.png"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-rotativo-estereo-a20k-6p-18mm",
+    "nombre": "potenciometro rotativo estereo A20K 18mm",
+    "descripcion": "potenciometro rotativo estereo de 6 pines, 18mm de altura",
+    "descripcion_larga": "potenciometro rotativo \"A20K\" de 6 pines, 18mm de altura",
+    "imagenes": [
+      "/images/productos/potenciometro-rotativo-estereo-a20k-6p-18mm/imagen-1.png"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-rotativo-estereo-b20k-6p-18mm",
+    "nombre": "potenciometro rotativo estereo B20K 18mm",
+    "descripcion": "potenciometro rotativo estereo de 6 pines, 18mm de altura",
+    "descripcion_larga": "potenciometro rotativo \"B20K\" de 6 pines, 18mm de altura",
+    "imagenes": [
+      "/images/productos/potenciometro-rotativo-estereo-b20k-6p-18mm/imagen-1.png"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-rotativo-estereo-a50k-6p-18mm",
+    "nombre": "potenciometro rotativo estereo A50K 18mm",
+    "descripcion": "potenciometro rotativo estereo de 6 pines, 18mm de altura",
+    "descripcion_larga": "potenciometro rotativo \"A50K\" de 6 pines, 18mm de altura",
+    "imagenes": [
+      "/images/productos/potenciometro-rotativo-estereo-a50k-6p-18mm/imagen-1.png"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-rotativo-estereo-b10k-6p-18mm",
+    "nombre": "potenciometro rotativo estereo B10K 18mm",
+    "descripcion": "potenciometro rotativo estereo de 6 pines, 18mm de altura",
+    "descripcion_larga": "potenciometro rotativo \"B10K\" de 6 pines, 18mm de altura",
+    "imagenes": [
+      "/images/productos/potenciometro-rotativo-estereo-b10k-6p-18mm/imagen-1.png"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-rotativo-estereo-a10k-6p-18mm",
+    "nombre": "potenciometro rotativo estereo A10K 18mm",
+    "descripcion": "potenciometro rotativo estereo de 6 pines, 18mm de altura",
+    "descripcion_larga": "potenciometro rotativo \"A10K\" de 6 pines, 18mm de altura",
+    "imagenes": [
+      "/images/productos/potenciometro-rotativo-estereo-a10k-6p-18mm/imagen-1.png"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-rotativo-estereo-ca10-6p-18mm",
+    "nombre": "potenciometro rotativo estereo CA10 18mm",
+    "descripcion": "potenciometro rotativo estereo de 6 pines, 18mm de altura",
+    "descripcion_larga": "potenciometro rotativo \"ca10\" de 6 pines, 18mm de altura",
+    "imagenes": [
+      "/images/productos/potenciometro-rotativo-estereo-ca10-6p-18mm/imagen-1.png"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-rotativo-estereo-ac10k-6p-18mm",
+    "nombre": "potenciometro rotativo estereo AC10K 18mm",
+    "descripcion": "potenciometro rotativo estereo de 6 pines, 18mm de altura",
+    "descripcion_larga": "potenciometro rotativo \"AC10k\" de 6 pines, 18mm de altura",
+    "imagenes": [
+      "/images/productos/potenciometro-rotativo-estereo-ac10k-6p-18mm/imagen-1.png"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-rotativo-estereo-b50k-6p-18mm",
+    "nombre": "potenciometro rotativo estereo B50K 18mm",
+    "descripcion": "potenciometro rotativo estereo de 6 pines, 18mm de altura",
+    "descripcion_larga": "potenciometro rotativo \"B50k\" de 6 pines, 18mm de altura",
+    "imagenes": [
+      "/images/productos/potenciometro-rotativo-estereo-b50k-6p-18mm/imagen-1.png"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-rotativo-estereo-b10k-4p-12mm",
+    "nombre": "potenciometro rotativo estereo B10K 12mm",
+    "descripcion": "potenciometro rotativo estereo de 4 pines, 12mm de altura",
+    "descripcion_larga": "potenciometro rotativo \"B10K\" de 4 pines, 12mm de altura",
+    "imagenes": [
+      "/images/productos/potenciometro-rotativo-estereo-b10k-4p-12mm/imagen-1.png",
+      "/images/productos/potenciometro-rotativo-estereo-b10k-4p-12mm/imagen-2.png"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-rotativo-mono-a20k-3p-20mm",
+    "nombre": "Potenciometro rotativo mono A20K 20mm",
+    "descripcion": "potenciometro rotativo mono de 3 pines, 20mm de altura",
+    "descripcion_larga": "potenciometro rotativo \"A20K\" de 3 pines, 20mm de altura",
+    "imagenes": [
+      "/images/productos/potenciometro-rotativo-mono-a20k-3p-20mm/imagen-1.png",
+      "/images/productos/potenciometro-rotativo-mono-a20k-3p-20mm/imagen-2.png"
+    ],
+    "categoria": "potenciometros"
+  },
+  {
+    "id": "potenciometro-rotativo-mono-b10k-b103-3p-3mm",
+    "nombre": "Potenciometro rotativo mono B10K 3mm",
+    "descripcion": "potenciometro rotativo mono, 3mm de altura, de 3 pines",
+    "descripcion_larga": "potenciometro rotativo \"B10K y B103\" de 3 pines, 3mm de altura",
+    "imagenes": [
+      "/images/productos/potenciometro-rotativo-mono-b10k-b103-3p-3mm/imagen-1.png"
+    ],
+    "categoria": "potenciometros"
   }
 ]
